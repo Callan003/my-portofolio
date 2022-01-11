@@ -58,7 +58,7 @@ export class ProjectDetailsPage implements OnInit {
 
     if(today.getFullYear() > projectDate.getFullYear()) {
       return '../../../assets/icon/old.svg'
-    } else if (today.getMonth() > projectDate.getMonth() && (today.getMonth() + 1) - (projectDate.getMonth() + 1) < 3 ) {
+    } else if (today.getMonth() >= projectDate.getMonth() && (today.getMonth() + 1) - (projectDate.getMonth() + 1) < 3 ) {
       return '../../../assets/icon/baby-solid.svg'
     }
 
