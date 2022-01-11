@@ -1,0 +1,101 @@
+
+<ion-header [translucent]="true" collapse="fade">
+  <app-header></app-header>
+  <ion-progress-bar class='progress-bar' [value]="scrollPosition" [color]="scrollPosition < 1 ? 'dark' : 'success'"></ion-progress-bar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <ion-grid class="center-grid">
+    <ion-row>
+      <ion-col>
+        <ion-card class="project-info-card">
+          <ion-card-header>
+          <ion-card-title>Project info</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-text slot="start">Name</ion-text>
+                <ion-text slot="end">{{projectName}}</ion-text>
+              </ion-item>
+              <ion-item>
+                <ion-text slot="start">Created</ion-text>
+                <ion-text slot="end" *ngIf="projectDetails" >
+                  <ion-icon [src]="getImageSrc(projectDetails?.created_at)"></ion-icon>
+                  {{projectDetails?.created_at | date: 'MMM YYYY'}}
+                </ion-text>
+                <ion-spinner slot="end" name="bubbles" *ngIf="!projectDetails"></ion-spinner>
+              </ion-item>
+              <ion-item class="ion-no-margin">
+                <ion-text slot="start">Stars</ion-text>
+                <ion-text slot="end" *ngIf="projectDetails">
+                  {{projectDetails?.stargazers_count}} 
+                  <ion-icon size="small" name="star" color="warning"></ion-icon>
+                </ion-text>
+                <ion-spinner slot="end" name="bubbles" *ngIf="!projectDetails"></ion-spinner>
+              </ion-item>
+              <ion-item>
+                <ion-text slot="start">Watchers</ion-text>
+                <ion-text slot="end" *ngIf="projectDetails">
+                  {{projectDetails?.watchers_count}}
+                  <ion-icon size="small" name="eye" color="dark"></ion-icon>
+                </ion-text>
+                <ion-spinner slot="end" name="bubbles" *ngIf="!projectDetails"></ion-spinner>
+              </ion-item>
+              <ion-item>
+                <ion-text slot="start">Forks</ion-text>
+                <ion-text slot="end" *ngIf="projectDetails">
+                  {{projectDetails?.forks_count}}
+                  <ion-icon size="small" name="git-network" color="dark"></ion-icon>
+                </ion-text>
+                <ion-spinner slot="end" name="bubbles" *ngIf="!projectDetails"></ion-spinner>
+              </ion-item>
+              <ion-item [href]="'https://github.com/Callan003/' + projectName" target="_blank">
+                <ion-text slot="start">Github Project Link</ion-text>
+                <ion-text slot="end">
+                  <ion-icon size="small" name="logo-github" color="dark"></ion-icon>
+                </ion-text>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="languages-percentage-card">
+          <ion-card-header>
+            <ion-card-subtitle (click)="showDescription()">
+              <ion-icon name="information-circle-outline" size="large" class="ion-float-right"></ion-icon>
+            </ion-card-subtitle>
+            <ion-card-title>
+              Programming Languages
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div><canvas #pieChart></canvas></div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>ReadMe <ion-icon [name]="readme? 'happy-outline': 'sad-outline'" size="large" class='ion-float-right'></ion-icon></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class='readme-data' *ngIf="readme"  [innerHTML]="readme"></div>
+            <div *ngIf="!readme" >
+              <i>This project does not contain a 'README' file </i>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

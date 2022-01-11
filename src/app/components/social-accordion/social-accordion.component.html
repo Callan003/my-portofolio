@@ -1,0 +1,124 @@
+<ion-accordion-group>
+  <ion-accordion value="gihtub">
+    <ion-item slot="header">
+      <ion-icon size="large" name="logo-github" slot="start" color="dark"></ion-icon>
+      <ion-label>Github</ion-label>
+    </ion-item>
+    <ion-list slot="content" lines="none">
+        <ion-item>
+          <ion-icon slot="start" size="small" name="library" color="dark"></ion-icon>
+          <ion-label>Public Repos: {{gitHubProfileInfo?.public_repos}}
+            <ion-spinner name="bubbles" *ngIf="!gitHubProfileInfo || fetchingData"></ion-spinner>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" size="small" name="people" color="dark"></ion-icon>
+          <ion-label>Followers: {{gitHubProfileInfo?.followers}}
+            <ion-spinner name="bubbles" *ngIf="!gitHubProfileInfo || fetchingData"></ion-spinner>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" size="small" name="eye" color="dark"></ion-icon>
+          <ion-label>Following: {{gitHubProfileInfo?.following}}
+            <ion-spinner name="bubbles" *ngIf="!gitHubProfileInfo || fetchingData"></ion-spinner>
+          </ion-label>
+        </ion-item>
+        <ion-item href="https://github.com/Callan003" target="_blank">
+          <ion-icon slot="start" size="small" name="enter" color="dark"></ion-icon>
+          <ion-label>See my profile</ion-label>
+        </ion-item>
+    </ion-list>
+  </ion-accordion>
+  <ion-accordion value="stackoverflow">
+    <ion-item slot="header">
+      <ion-icon size="large" name="logo-stackoverflow" slot="start" color="dark"></ion-icon>
+      <ion-label>Stackoverflow</ion-label>
+    </ion-item>
+    <ion-list slot=content *ngIf="stackoverflowLimitExceeded" lines="none" >
+      <ion-item>
+        <ion-icon slot="start" size="small" name="ban" color="danger"></ion-icon>
+        <ion-text>Daily request limit exceeded! Try again later.</ion-text>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf="!stackoverflowLimitExceeded"  slot="content" lines="none">
+      <ion-item>
+        <div class="margin-auto">
+          <ion-chip outline="true" class="gold">
+            <ion-icon size="small" name="medal"></ion-icon>
+            <ion-label>Gold: {{stackoverflowProfileInfo?.badge_counts?.gold}} 
+              <ion-spinner name="bubbles" *ngIf="!stackoverflowProfileInfo || fetchingData"></ion-spinner>
+            </ion-label>
+          </ion-chip>
+          <ion-chip outline="true" class="silver">
+            <ion-icon size="small" name="medal"></ion-icon>
+            <ion-label>Silver: {{stackoverflowProfileInfo?.badge_counts?.silver}}
+              <ion-spinner name="bubbles" *ngIf="!stackoverflowProfileInfo || fetchingData"></ion-spinner>
+            </ion-label>
+          </ion-chip>
+          <ion-chip outline="true" class="bronze">
+            <ion-icon size="small" name="medal" class="bronze"></ion-icon>
+            <ion-label>Bronze: {{stackoverflowProfileInfo?.badge_counts?.bronze}}
+              <ion-spinner name="bubbles" *ngIf="!stackoverflowProfileInfo || fetchingData"></ion-spinner>
+            </ion-label>
+          </ion-chip>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" size="small" name="trophy" color="dark"></ion-icon>
+        <ion-label>
+          Reputation: 
+          {{stackoverflowProfileInfo?.reputation}}
+          <ion-spinner name="bubbles" *ngIf="!stackoverflowProfileInfo || fetchingData"></ion-spinner>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" size="small" name="trending-up" color="dark"></ion-icon>
+        <ion-label>Rep. last month: 
+          {{stackoverflowProfileInfo?.reputation_change_month}}
+          <ion-spinner *ngIf="!stackoverflowProfileInfo || fetchingData" name="bubbles"></ion-spinner>
+        </ion-label>
+      </ion-item>
+      <ion-item href="https://stackoverflow.com/users/15947768/callan" target="_blank">
+        <ion-icon slot="start" size="small" name="enter" color="dark"></ion-icon>
+        <ion-label>See my profile</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-accordion>
+  <ion-accordion value="lichess">
+    <ion-item slot="header">
+      <ion-icon size="large" slot="start" color="dark" src="../../assets/icon/lichess.svg"></ion-icon>
+      <ion-label>Lichess</ion-label>
+    </ion-item>
+    <ion-list slot="content" lines="none">
+        <ion-item>
+          <ion-icon slot="start" size="small" src="../../assets/icon/chess-solid.svg" color="dark"></ion-icon>
+          <ion-label>Total Games: 
+            {{lichessProfileInfo?.count?.all}}
+            <ion-spinner name="bubbles" *ngIf="!lichessProfileInfo || fetchingData"></ion-spinner>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" size="small" name="flame" color="dark"></ion-icon>
+          <ion-label>
+            Blitz Rating: 
+            {{lichessProfileInfo?.perfs?.blitz?.rating}}
+            <ion-spinner name="bubbles" *ngIf="!lichessProfileInfo || fetchingData"></ion-spinner>
+          </ion-label>
+        </ion-item>
+        <ion-item href='https://lichess.org/?user=Callan003#friend' target="_blank">
+          <ion-icon slot="start" size="small" src="../../assets/icon/swords.svg" color="dark"></ion-icon>
+          <ion-label class="lichess-challange">
+            <strong>Challange me!</strong>
+            <span>
+              ({{lichessProfileInfo?.online ? 'Online' : 'Offline'}}
+              <ion-icon class="vertical-align-middle" size="small" name="ellipse" [ngClass]="lichessProfileInfo?.online ? 'online' : 'offline'"></ion-icon>)
+            </span>
+          </ion-label>
+        </ion-item>
+        <ion-item href="https://lichess.org/@/Callan003" target="_blank">
+          <ion-icon slot="start" size="small" name="enter" color="dark"></ion-icon>
+          <ion-label>See my profile</ion-label>
+        </ion-item>
+    </ion-list>
+  </ion-accordion>
+</ion-accordion-group>

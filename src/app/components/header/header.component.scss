@@ -1,0 +1,35 @@
+.fade-in-and-out {
+    opacity: 0;
+    -webkit-animation: fadeInOut 3s;
+    animation: fadeInOut 3s;
+  }
+  
+  
+  @-webkit-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    65% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+  }
+  @keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    65% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+  }

@@ -74,15 +74,19 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-card-color: #000;
+  ion-card-title {
+    color: #000;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
    * -------------------------------------------
    */
 
-  body {
+  body[color-theme="dark"] {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -145,6 +149,11 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    --ion-card-color: #fff;
+    ion-card-title {
+      color: #fff;
+    }
   }
 
   /*
@@ -152,7 +161,7 @@
    * -------------------------------------------
    */
 
-  .ios body {
+  .ios body[color-theme="dark"] {
     --ion-background-color: #000000;
     --ion-background-color-rgb: 0,0,0;
 
@@ -184,7 +193,7 @@
     --ion-card-background: #1c1c1d;
   }
 
-  .ios ion-modal {
+  .ios ion-modal[color-theme="dark"] {
     --ion-background-color: var(--ion-color-step-100);
     --ion-toolbar-background: var(--ion-color-step-150);
     --ion-toolbar-border-color: var(--ion-color-step-250);
@@ -196,7 +205,7 @@
    * -------------------------------------------
    */
 
-  .md body {
+  .md body[color-theme="dark"] {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
@@ -227,10 +236,34 @@
 
     --ion-item-background: #1e1e1e;
 
-    --ion-toolbar-background: #1f1f1f;
+    --ion-toolbar-background: #121212;
 
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
   }
+
+  .readme-data {
+    h2 {
+        font-size: large;
+        font-weight: bold;
+        padding: 10px 0;
+    }
+  }
+
+  ion-card {
+    border-radius: 16px;
+  }
+
+  .description-alert {
+    --background: var(--ion-color-light);
+    .description-alert-button-success {
+      color: var(--ion-color-success);
+      font-weight: bold;
+    }
+    .description-alert-button-fail {
+      color: var(--ion-color-danger);
+      font-weight: bold;
+    }
 }
+

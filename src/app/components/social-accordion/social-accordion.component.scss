@@ -1,0 +1,47 @@
+.margin-auto {
+    margin: auto;
+  }
+  
+  .lichess-challange {
+    ion-icon {
+      vertical-align: middle;
+    }
+  }
+  
+  .online {
+    color: green;
+  }
+  
+  .offline {
+    color: red;
+  }
+  
+  .gold {
+    border-color: #f0b400;
+    background-color: #5d573c;
+    color: white;
+    ion-icon {
+      color: #f0b400;
+    }
+  }
+  .silver {
+    border-color: #999c9f;
+    background-color: #424242;
+    color: white;
+  
+    ion-icon {
+      color: #999c9f;
+    }
+  }
+  .bronze {
+    border-color: #ab825f;
+    background-color: #4e443c;
+    color: white;
+    ion-icon {
+      color: #ab825f;
+    }
+  }
+
+ion-spinner {
+    vertical-align: middle;
+}

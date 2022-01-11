@@ -1,0 +1,47 @@
+.languages-percentage-card {
+    max-width: 500px;
+    min-width: 280px;
+    --color: var(--ion-color-dark) !important;
+    ion-card-content {
+        padding: 0;
+        min-height: 300px;
+        max-width: 500px;
+        div {
+            height: 325px;
+            width: 100%;
+            min-width: 280px;
+        }
+    }
+    ion-card-header {
+        padding-bottom: 0;
+    }
+    ion-card-subtitle {
+        z-index: 2;
+        cursor: pointer;
+    }
+}
+
+.project-info-card {
+    max-width: 500px;
+    min-width: 280px;
+    ion-icon {
+        vertical-align: text-bottom;
+    }
+}
+
+
+.center-grid {
+    ion-row {
+        max-width: 1000px;
+        margin: auto;
+        ion-col {
+            ion-card {
+                margin: 10px auto;
+
+            }
+        }
+    }
+
+}
+
+

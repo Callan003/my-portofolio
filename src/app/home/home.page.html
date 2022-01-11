@@ -1,20 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="true" collapse="fade">
+  <app-header></app-header>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Portofolio</ion-card-subtitle>
+            <ion-card-title color="primary">Stroescu Marian-Calin</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <p>This portofolio was build using Ionic Framework with Angular!</p>
+          </ion-card-content>
+          <app-social-accordion
+           [lichessProfileInfo]="lichessProfileInfo"
+           [gitHubProfileInfo]="gitHubProfileInfo"
+           [stackoverflowProfileInfo]="stackoverflowProfileInfo"
+           [stackoverflowLimitExceeded]="stackoverflowLimitExceeded"
+           [fetchingData]="fetchingData">
+          </app-social-accordion>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-title>Github Projects</ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let item of listOfItems">
+        <app-project-item [item]="item"></app-project-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

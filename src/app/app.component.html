@@ -1,3 +1,33 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-reorder-group  (ionItemReorder)="reorderItems($event)" #reorderGroup>
+        <ion-reorder *ngFor="let item of menuItems" >
+          <ion-item [href]="item.link" (click)="navigateTo(item.link)">
+            <ion-icon [name]="item.icon" slot="start"></ion-icon>
+            <ion-label>{{item.name}}</ion-label>
+          </ion-item>
+        </ion-reorder>
+      </ion-reorder-group>
+    </ion-list>
+    <div class="ion-text-center" *ngIf="showDragMeInfo && !reorderGroup.disabled" >
+      <ion-icon name="arrow-up" class="up" size='large'></ion-icon>
+      <p>Drag me!</p>
+    </div>
+  </ion-content>
+  <ion-footer>
+    <ion-item (click)="toggleReorderGroup()">
+      <ion-label>Toggle reorder</ion-label>
+      <ion-toggle color="primary" mode='ios' [checked]="!reorderGroup.disabled"></ion-toggle>
+    </ion-item>
+  </ion-footer>
+</ion-menu>
+
+<ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

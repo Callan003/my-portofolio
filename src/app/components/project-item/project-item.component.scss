@@ -1,0 +1,24 @@
+.project-item {
+    max-height: 500px;
+    max-width: 100%;
+    min-width: 190px;
+    img {
+      max-height: 300px;
+      max-width: 410px;
+    }
+  }
+
+ion-card {
+  border-radius: 16px;
+}
+
+.favorite-heart {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  font-size: 20px;
+  margin: 20px;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--ion-color-dark-contrast);
+}

@@ -1,0 +1,19 @@
+<ion-icon name="heart" class="favorite-heart" [color]="isFav ? 'danger' : 'dark'" (click)="addToFavorites(item)"></ion-icon>
+<ion-card [href]="'/project-details/' + item.name" class='project-item'>
+  <img [src]="'https://github.com/Callan003/' + item.name + '/blob/main/chatAppNoDrive.jpg?raw=true'"
+   onerror="this.style.display='none'" width="100%" height="100%" [alt]='item.name' />
+  <ion-card-header>
+    <ion-card-title>{{item.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p class="ion-padding-bottom">{{item.description ? item.description : "This project has no description"}}</p>
+    <ion-chip>
+      <ion-icon name="calendar-number-outline" color="dark" size="small"></ion-icon>
+      <ion-label>{{item.created_at | date}}</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-icon name="star" color="warning" size="small"></ion-icon>
+      <ion-label>{{item.stargazers_count}}</ion-label>
+    </ion-chip>
+  </ion-card-content>
+</ion-card>
