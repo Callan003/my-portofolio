@@ -1,0 +1,45 @@
+<ion-header [translucent]="true" collapse="fade">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="center-grid ion-padding-horizontal max-width-500">
+    <ion-row>
+      <ion-col >
+        <h2>List of Favorites</h2>
+        <p *ngIf="data.length" >Here you can find a list of my GitHub projects that you added to Favorites!</p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.length" >
+      <ion-col *ngFor="let item of data" >
+        <app-project-item [item]="item"></app-project-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!data.length">
+      <ion-col>
+        <ion-item lines="none" class="ion-padding-bottom">
+          <ion-icon slot="end" size="large" color="dark" name="sad-outline"></ion-icon>
+          <ion-text>
+            <i>Oh no! It looks like you did not add any of my projects to the Favorites list! How rude!</i>
+         </ion-text> 
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="heart" class="favorite-heart" color="dark"></ion-icon>
+          <ion-text>
+            <i>Go to <a href="home">Home</a> page and add projects to your Favorites list by clicking the hearth icon!</i>
+         </ion-text> 
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!data.length" >
+      <ion-col>
+        <ion-buttons>
+          <ion-button strong="true" href="home" shape="round" color="danger" expand="block" fill="clear" size="large">
+            <ion-icon slot="end" name='heart'></ion-icon>
+            Let's go!
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

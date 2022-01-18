@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'project-details/:projectName',
     loadChildren: () => import('./project-details/project-details.module').then( m => m.ProjectDetailsPageModule)
   },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
+  {
+    path: 'project-listing',
+    loadChildren: () => import('./project-listing/project-listing.module').then( m => m.ProjectListingPageModule)
+  },
 ];
 
 @NgModule({

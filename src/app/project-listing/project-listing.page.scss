@@ -1,0 +1,41 @@
+div {
+    max-width: 500px;
+}
+
+.absolute-positioned-cards {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 30px;
+}
+
+.last-card {
+    width: calc(100% - 20px);
+    max-width: 500px;
+    max-height: 500px;
+    min-height: 500px;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 25px;
+    ion-button {
+        margin: auto;
+    }
+}
+
+.swipe-negative-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 80px;
+    opacity: 0;
+}
+
+.swipe-positive-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 70px;
+    opacity: 0;
+}

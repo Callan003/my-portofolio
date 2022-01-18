@@ -267,3 +267,31 @@
     }
 }
 
+.center-grid {
+  ion-row {
+      max-width: 1000px;
+      margin: auto;
+      ion-col {
+          ion-card {
+              margin: 10px auto;
+
+          }
+      }
+  }
+}
+
+.project-item {
+  position: relative;
+  max-height: 500px;
+  max-width: 100%;
+  min-width: 190px;
+  img {
+    max-height: 300px;
+    max-width: 410px;
+  }
+}
+
+.max-width-500 {
+  max-width: 500px;
+}
+

@@ -15,14 +15,9 @@ export class AppComponent {
 
   showDragMeInfoOnlyOnce = true;
   showDragMeInfo = false;
+  currentRoute;
 
-  menuItems: MenuItems[] = [
-    {
-    icon: 'home',
-    name: 'Home',
-    link: 'home'
-  }, { icon: 'mail', 'name': 'Inbox'}, {icon: 'paper-plane', name: 'Outbox'}, {icon: 'heart', name: 'Favorites'}
-]
+  menuItems: MenuItems[] = MenuItems;
 
   constructor(
     private toastController: ToastController,
@@ -41,8 +36,6 @@ export class AppComponent {
     this.menuItems.splice(event.detail.to, 0, itemMove);
     localStorage.setItem(menuItemsToken, JSON.stringify(this.menuItems));
     event.detail.complete();
-
-    console.log(this.menuItems[this.menuItems.length - 1]);
 
     if(this.menuItems[this.menuItems.length - 1].name === 'Home') {
       this.presentToast();

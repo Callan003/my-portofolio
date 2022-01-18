@@ -1,0 +1,29 @@
+<ion-header [translucent]="true" collapse="fade">
+  <app-header></app-header>
+</ion-header>
+
+<!-- <ion-content>
+  <ion-col *ngFor="let item of listOfItems">
+    <app-project-item [item]="item"></app-project-item>
+  </ion-col>
+</ion-content> -->
+
+<ion-content>
+  <ion-icon name="close" class="swipe-negative-icon" #swipeNegativeIcon></ion-icon>
+  <ion-icon name="heart" class="swipe-positive-icon" #swipePositiveIcon></ion-icon>
+  <div>
+    <div class="absolute-positioned-cards last-card ion-padding">
+
+      <ion-button (click)="resetCards()">Reset</ion-button>
+
+      <!-- <ion-card-header>
+        No more projects
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button (click)="resetCards()">Click to reset</ion-button>
+      </ion-card-content> -->
+    </div>
+    <app-project-swipeable-item *ngFor="let item of listOfItems" class="absolute-positioned-cards" [item]="item"></app-project-swipeable-item>
+  </div>
+
+</ion-content>

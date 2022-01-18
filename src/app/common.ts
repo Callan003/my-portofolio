@@ -24,3 +24,21 @@ export interface MenuItems {
     name: string,
     link?: string
 }
+
+export const MenuItems = [
+    {
+    icon: 'home',
+    name: 'Home',
+    link: 'home'
+    }, {
+     icon: 'logo-github',
+     name: 'Github Projects',
+     link: 'project-listing'
+    }, {
+    icon: 'paper-plane',
+     name: 'Outbox'
+    }, {
+    icon: 'heart',
+    name: 'Favorites',
+    link: 'favorites'}
+]

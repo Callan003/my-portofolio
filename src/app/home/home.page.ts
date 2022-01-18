@@ -1,8 +1,6 @@
-import { ThemeAttribute, ThemeIcons } from './../common';
+import { FavoriteService } from './../services/favorite.service';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Themes } from '../common';
 import { HttpClient } from '@angular/common/http';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +14,16 @@ export class HomePage implements OnInit {
   stackoverflowLimitExceeded = false;
   lichessProfileInfo: any;
   fetchingData = false;
+  favorites = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private favoriteService: FavoriteService
+    ) {}
 
   ngOnInit(): void {
     this.fetchData();
+    this.favorites = this.favoriteService.getFavorites();
   }
 
   fetchData() {
@@ -41,7 +44,7 @@ export class HomePage implements OnInit {
       console.log(this.stackoverflowProfileInfo);
   });
   }
-    this.http.get(`https://api.github.com/users/Callan003/repos`).subscribe((res: any) => {
+    this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).subscribe((res: any) => {
       this.listOfItems = res;
       console.log(res);
     });

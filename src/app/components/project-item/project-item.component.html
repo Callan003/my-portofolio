@@ -1,7 +1,8 @@
+<div class='project-item'> 
 <ion-icon name="heart" class="favorite-heart" [color]="isFav ? 'danger' : 'dark'" (click)="addToFavorites(item)"></ion-icon>
 <ion-card [href]="'/project-details/' + item.name" class='project-item'>
-  <img [src]="'https://github.com/Callan003/' + item.name + '/blob/main/chatAppNoDrive.jpg?raw=true'"
-   onerror="this.style.display='none'" width="100%" height="100%" [alt]='item.name' />
+  <img [src]="imgSrc"
+   onerror="this.onerror=null; this.src='../../../assets/images/no-image.jpg'" width="100%" height="100%" [alt]='item.name' />
   <ion-card-header>
     <ion-card-title>{{item.name}}</ion-card-title>
   </ion-card-header>
@@ -17,3 +18,4 @@
     </ion-chip>
   </ion-card-content>
 </ion-card>
+</div>

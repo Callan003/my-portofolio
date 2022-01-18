@@ -1,3 +1,4 @@
+import { ProjectSwipeableItemComponent } from './project-swipeable-item/project-swipeable-item.component';
 import { HeaderComponent } from './header/header.component';
 import { SocialAccordionComponent } from './social-accordion/social-accordion.component';
 import { NgModule } from '@angular/core';
@@ -8,11 +9,11 @@ import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
-  declarations: [ProjectItemComponent, SocialAccordionComponent, HeaderComponent],
+  declarations: [ProjectItemComponent, SocialAccordionComponent, HeaderComponent, ProjectSwipeableItemComponent],
   imports: [
     IonicModule,
     CommonModule
   ],
-  exports: [ProjectItemComponent, SocialAccordionComponent, HeaderComponent]
+  exports: [ProjectItemComponent, SocialAccordionComponent, HeaderComponent, ProjectSwipeableItemComponent]
 })
 export class ComponentsModule { }
