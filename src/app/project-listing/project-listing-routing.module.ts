@@ -6,8 +6,24 @@ import { ProjectListingPage } from './project-listing.page';
 const routes: Routes = [
   {
     path: '',
-    component: ProjectListingPage
-  }
+    component: ProjectListingPage,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./tinder-style/tinder-style.module').then( m => m.TinderStylePageModule)
+      },
+      {
+        path: 'tinder-style',
+        loadChildren: () => import('./tinder-style/tinder-style.module').then( m => m.TinderStylePageModule)
+      },
+      {
+        path: 'regular-listing',
+        loadChildren: () => import('./regular-listing/regular-listing.module').then( m => m.RegularListingPageModule)
+      },
+    ]
+  },
+
+
 ];
 
 @NgModule({

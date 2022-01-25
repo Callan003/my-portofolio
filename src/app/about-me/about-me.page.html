@@ -1,0 +1,74 @@
+<ion-header [translucent]="true" collapse="fade">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="center-grid ion-padding">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header class="ion-text-center">
+            <img class="profileImage" src="https://avatars.githubusercontent.com/u/46570756?v=4">
+            <ion-card-title>Stroescu Marian-Calin</ion-card-title>
+            <ion-card-subtitle>Web Developer</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ducimus nostrum optio pariatur iure debitis totam eaque tempore perferendis facere ipsa id iste qui autem, eveniet libero doloremque architecto cum.</p>
+            <br/>
+            <h2><strong>Some of the technologies I use:</strong></h2>
+            <ion-row class="ion-padding">
+              <ion-col (click)="prev()" size="1" class="ion-text-start">
+                <ion-icon style="vertical-align: -webkit-baseline-middle;" name="chevron-back" ></ion-icon>
+              </ion-col>
+              <ion-col size="10" class="ion-text-center">
+                <swiper #swiper [config]="config">
+                  <ng-template swiperSlide *ngFor="let item of technologies">
+                    <ion-icon [name]="'logo-' + item.name" size="large" color="medium"></ion-icon>
+                  </ng-template>
+                </swiper>
+              </ion-col>
+              <ion-col (click)="next()" size="1" class="ion-text-end">
+                <ion-icon style="vertical-align: -webkit-baseline-middle;" name="chevron-forward" ></ion-icon>
+              </ion-col>
+            </ion-row>
+
+            <h2><strong>My stats</strong></h2>
+            <app-social-accordion
+            [lichessProfileInfo]="lichessProfileInfo"
+            [gitHubProfileInfo]="gitHubProfileInfo"
+            [stackoverflowProfileInfo]="stackoverflowProfileInfo"
+            [stackoverflowLimitExceeded]="stackoverflowLimitExceeded"
+            [fetchingData]="fetchingData">
+           </app-social-accordion>
+            <ion-list lines="none">
+              <h2><strong>Contact</strong></h2>
+
+              <ion-item-sliding *ngFor="let item of contactData; let i = index as string">
+                <ion-item>
+                  <ion-icon [name]="item?.icon" slot="start"></ion-icon>
+                  <ion-label><a #anchor [href]="item.type === 'email' ? 'mailto:' + item.url : item.url" target="_blank">{{item.name}}</a></ion-label>
+                </ion-item>
+
+                <ion-item-options side="start">
+                  <ion-item-option color="secondary">
+                  <ion-icon class="ion-padding ion-margin" name="copy"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+
+                <ion-item-options side="end">
+                  <ion-item-option (click)="anchor.click()" >
+                  <ion-icon class="ion-padding ion-margin" name="log-out"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+         
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

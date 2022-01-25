@@ -1,0 +1,30 @@
+<ion-content>
+    <ion-icon name="close" class="swipe-negative-icon tutorial-reject" #swipeNegativeIcon></ion-icon>
+    <ion-icon name="heart" class="swipe-positive-icon tutorial-heart" #swipePositiveIcon></ion-icon>
+    <div>
+      <div class="absolute-positioned-cards last-card ion-padding">
+        <div class="no-more-projects">
+          <i class="ion-text-center">
+            <ion-icon name="sad"></ion-icon> Oh no! 
+          </i>
+          <p>
+            <i>No more projects...</i>
+          </p>
+          <ion-button href="favorites" expand="full" shape="round" fill="clear" color="dark">
+            <ion-icon slot="start" name="heart" color="danger"></ion-icon>
+            See Favorites
+          </ion-button>
+          <ion-button fill="clear" expand="full" shape="round" (click)="resetCards()" color="dark">
+            <ion-icon slot="start" name="refresh"></ion-icon>
+            Reset
+          </ion-button>
+        </div>
+      </div>
+      <app-project-swipeable-item 
+      *ngFor="let item of listOfItems; let i = index"
+      class="absolute-positioned-cards"
+        [class.tutorial-animation]="i === (listOfItems.length - 1)"
+        [item]="item">
+        </app-project-swipeable-item>
+    </div>
+</ion-content>

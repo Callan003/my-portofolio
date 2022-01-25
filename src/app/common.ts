@@ -35,10 +35,30 @@ export const MenuItems = [
      name: 'Github Projects',
      link: 'project-listing'
     }, {
-    icon: 'paper-plane',
-     name: 'Outbox'
+     icon: 'person',
+     name: 'About Me',
+     link: 'about-me'
     }, {
     icon: 'heart',
     name: 'Favorites',
     link: 'favorites'}
+]
+
+export const Technologies = [
+    {name: 'ionic'},
+    {name: 'capacitor'},
+    {name: 'angular'},
+    {name: 'github'},
+    {name: 'firebase'},
+    {name: 'html5'},
+    {name: 'css3'},
+    {name: 'javascript'},
+    {name: 'bitbucket'},
+    {name: 'python'},
+]
+
+export const ContactData = [
+    { icon: 'mail', url: 'cali_stroescu@yahoo.com', type: 'email', name: 'cali_stroescu@yahoo.com' },
+    { icon: 'logo-linkedin', url: 'https://www.linkedin.com/in/marian-calin-stroescu-440735b6/', type: 'social', name: 'Marian-Calin Stroescu'},
+    { icon: 'logo-facebook', url: 'https://www.facebook.com/calin.callan', type: 'social', name: 'Calin Stroescu'}
 ]

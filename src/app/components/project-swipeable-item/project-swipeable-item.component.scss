@@ -8,4 +8,19 @@ ion-card {
       max-height: 300px;
       max-width: 100%;
     }
+    p {
+      padding-bottom: 48px;
+    }
+
+    ion-card-content {
+      min-height: 240px !important;
+      div {
+        position: absolute;
+        bottom: 16px;
+      }
+    }
+}
+
+.font-style-italic {
+  font-style: italic !important;
 }

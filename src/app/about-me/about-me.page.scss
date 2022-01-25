@@ -1,0 +1,28 @@
+@import 'swiper/css/bundle';
+
+.swiper{
+  width: 100%;
+  height: 100%;
+}
+ 
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImage {
+    border-radius: 50%;
+    border: 5px solid var(--ion-color-primary);
+    max-height: 400px;
+}
+
+.ion-slide {
+    --width: 50px !important;
+}
+
+.center-grid ion-row {
+    max-width: 600px;
+    margin: auto;
+}

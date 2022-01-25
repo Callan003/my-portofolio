@@ -1,8 +1,7 @@
-import { MenuController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { Component, ViewChild } from '@angular/core';
 import { MenuItems, menuItemsToken } from './common';
 import { ItemReorderEventDetail } from '@ionic/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +19,7 @@ export class AppComponent {
   menuItems: MenuItems[] = MenuItems;
 
   constructor(
-    private toastController: ToastController,
-    private router: Router,
-    private menu: MenuController
+    private toastController: ToastController
     ) {
     const menuItemsFromStorage = JSON.parse(localStorage.getItem(menuItemsToken));
     if(!!menuItemsFromStorage) {
@@ -59,13 +56,6 @@ export class AppComponent {
     if(this.showDragMeInfoOnlyOnce) {
       this.showDragMeInfo = true;
       this.showDragMeInfoOnlyOnce = false;
-    }
-  }
-
-  navigateTo(link: string) {
-    if(!!link) {
-      this.router.navigate([link]);
-      this.menu.close();
     }
   }
 }

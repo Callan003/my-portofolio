@@ -1,0 +1,89 @@
+div {
+    max-width: 500px;
+}
+
+.absolute-positioned-cards {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 35px;
+}
+
+.last-card {
+    width: calc(100% - 20px);
+    max-width: 500px;
+    max-height: 500px;
+    min-height: 500px;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.swipe-negative-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 80px;
+    opacity: 0;
+    z-index: 5;
+}
+
+.swipe-positive-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 70px;
+    opacity: 0;
+    z-index: 5;
+}
+
+.no-more-projects {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ion-button {
+    height: 46px;
+}
+
+.tutorial-animation {
+    animation-name: tutorial;
+    animation-delay: 1s;
+    animation-duration: 3s;
+}
+
+.tutorial-heart {
+    animation-name: fadeInAndOut;
+    animation-delay: 1s;
+    animation-duration: 1.5s;
+}
+
+.tutorial-reject {
+    animation-name: fadeInAndOut;
+    animation-delay: 2.5s;
+    animation-duration: 1.5s;
+}
+
+@keyframes tutorial {
+    0%   {transform: translateX(0px) rotate(0.5deg);}
+    25%  {transform: translateX(25px) rotate(5.5deg);}
+    50%  {transform: translateX(5px) rotate(0.5deg);}
+    75%  {transform: translateX(-25px) rotate(-5.5deg);}
+    100% {transform: translateX(0px) rotate(-0.5deg);}
+  }
+
+  @keyframes fadeInAndOut {
+      0% {opacity: 0;}
+      50% {opacity: 1; color: var(--ion-color-danger)}
+      100% {opacity: 0;}
+  }

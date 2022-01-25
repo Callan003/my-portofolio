@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing... custom 5000ms delay">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row *ngIf="!itemsLoaded" class="ion-text-center">
+      <ion-col>
+        <ion-spinner></ion-spinner>
+        <p>Loading projects...</p>
+        <i>Added custom delay of 5000ms to test spinner functionality</i>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="itemsLoaded" >
+      <ion-col *ngFor="let item of listOfItems">
+        <app-project-item [item]="item"></app-project-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

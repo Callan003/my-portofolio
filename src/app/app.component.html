@@ -9,10 +9,12 @@
     <ion-list>
       <ion-reorder-group  (ionItemReorder)="reorderItems($event)" #reorderGroup>
         <ion-reorder *ngFor="let item of menuItems" >
-          <ion-item [href]="item.link" (click)="navigateTo(item.link)">
+          <ion-menu-toggle>
+          <ion-item [routerLink]="item.link"  detail="false" routerDirection="root" routerLinkActive="selected">
             <ion-icon [name]="item.icon" slot="start"></ion-icon>
             <ion-label>{{item.name}}</ion-label>
           </ion-item>
+        </ion-menu-toggle>
         </ion-reorder>
       </ion-reorder-group>
     </ion-list>
