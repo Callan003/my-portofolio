@@ -33,25 +33,3 @@ ion-menu.md ion-item.selected {
 ion-menu.md ion-item.selected ion-icon {
   color: var(--ion-color-primary);
 }
-
-.signature {
-  position: absolute;
-  bottom: 30px;
-  right: 80px;
-  transform: rotate(-30deg);
-
-}
-
-#svg_9 {
-  stroke: var(--ion-color-dark);
-  stroke-dasharray: 529;
-  stroke-dashoffset: 529;
-  animation: sign 4s ease;
-  animation-fill-mode: forwards;
-}
-
-@keyframes sign {
-  to {
-      stroke-dashoffset: 0;
-  }
-}

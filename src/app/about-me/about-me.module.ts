@@ -9,6 +9,7 @@ import { AboutMePageRoutingModule } from './about-me-routing.module';
 
 import { AboutMePage } from './about-me.page';
 import { SwiperModule } from 'swiper/angular';
+import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { SwiperModule } from 'swiper/angular';
     ComponentsModule,
     SwiperModule
   ],
-  declarations: [AboutMePage]
+  declarations: [AboutMePage],
+  providers: [Clipboard]
 })
 export class AboutMePageModule {}

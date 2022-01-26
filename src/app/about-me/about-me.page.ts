@@ -1,10 +1,10 @@
-import { ToastController } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { Technologies, ContactData } from './../common';
 import { HttpClient } from '@angular/common/http';
 import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FavoriteService } from '../services/favorite.service';
 import { SwiperComponent } from 'swiper/angular';
-// import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 
 @Component({
   selector: 'app-about-me',
@@ -15,6 +15,9 @@ import { SwiperComponent } from 'swiper/angular';
 export class AboutMePage implements OnInit, AfterContentChecked  {
 
   @ViewChild('swiper') swiper: SwiperComponent;
+  @ViewChild('svg_9') svg_9: any;
+  @ViewChild('signature') signature: any;
+
 
   listOfItems: any[];
   gitHubProfileInfo: any;
@@ -31,13 +34,15 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     pagination: true,
     loop: true,
   }
+  public scrollPosition = 0;
 
 
   constructor(
-    // private clipboard: Clipboard,
+    private clipboard: Clipboard,
     private http: HttpClient,
     private favoriteService: FavoriteService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private platform: Platform
     ) {}
 
   ngOnInit(): void {
@@ -54,11 +59,9 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
   fetchData() {
     this.http.get(`https://lichess.org/api/user/Callan003`).subscribe((res: any) => {
       this.lichessProfileInfo = res;
-      console.log(this.lichessProfileInfo);
   });
     this.http.get(`https://api.github.com/users/Callan003`).subscribe((res: any) => {
       this.gitHubProfileInfo = res;
-      console.log(this.gitHubProfileInfo);
   });
   if(!this.stackoverflowLimitExceeded) {
     this.http.get(`https://api.stackexchange.com/2.3/users/15947768?order=desc&sort=reputation&site=stackoverflow`).subscribe((res: any) => {
@@ -66,12 +69,10 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
       if(res.quota_remaining > 1){
         this.stackoverflowLimitExceeded;
       }
-      console.log(this.stackoverflowProfileInfo);
   });
   }
     this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).subscribe((res: any) => {
       this.listOfItems = res;
-      console.log(res);
     });
   }
 
@@ -92,16 +93,40 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     this.swiper.swiperRef.slidePrev(200);
   }
 
-  // copyToClipboard(text: string) {
-  //   if (text) {
-  //     this.clipboard.copy(text).then(result => {
-  //      this.displayToast('success');
-  //     }).catch(error => {
-  //       this.displayToast('fail');
-
-  //     });
-  //   }
-  // }
+  copyToClipboard(text: string) {
+    if(this.platform.is('hybrid')) {
+      if (text) {
+        this.clipboard.copy(text).then(result => {
+        this.displayToast('success');
+        }).catch(error => {
+          this.displayToast('fail');
+        });
+      }
+    } else {
+      var txtArea = document.createElement("textarea");
+      txtArea.id = 'txt';
+      txtArea.style.position = 'fixed';
+      txtArea.style.top = '0';
+      txtArea.style.left = '0';
+      txtArea.style.opacity = '0';
+      txtArea.value = text;
+      document.body.appendChild(txtArea);
+      txtArea.select();
+    
+      try {
+        var successful = document.execCommand('copy');
+        this.displayToast('success');
+        if (successful) {
+          return true;
+        }
+      } catch (err) {
+        this.displayToast('fail');
+      } finally {
+        document.body.removeChild(txtArea);
+      }
+      return false;
+    }
+  }
 
   async displayToast(copy: 'success' | 'fail') {
     const toast = await this.toastController.create({
@@ -112,5 +137,30 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
       duration: 3000
     });
     toast.present();
+  }
+
+  restartAnimation() {
+    this.svg_9.nativeElement.id = '';
+    setTimeout(() => {
+      this.svg_9.nativeElement.id = 'svg_9';
+      const deg = this.getRandomDeg(-45, 45);
+      this.signature.nativeElement.style.transform = 'rotate(' + deg + 'deg)';
+    }, 1)
+  }
+
+  getRandomDeg(min, max): number {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  async logScrolling($event) {
+    if($event.target.localName != "ion-content") {
+      return;
+    }
+    const scrollElement = await $event.target.getScrollElement();
+    const scrollHeight = scrollElement.scrollHeight - scrollElement.clientHeight;
+    const currentScrollDepth = $event.detail.scrollTop;
+    if (this.scrollPosition < (((currentScrollDepth * 100) / scrollHeight) / 100)) {
+      this.scrollPosition = (((currentScrollDepth * 100) / scrollHeight) / 100);
+    }
   }
 }

@@ -22,7 +22,7 @@
       </div>
       <app-project-swipeable-item 
       *ngFor="let item of listOfItems; let i = index"
-      class="absolute-positioned-cards"
+      class="absolute-positioned-cards cursor-pointer"
         [class.tutorial-animation]="i === (listOfItems.length - 1)"
         [item]="item">
         </app-project-swipeable-item>

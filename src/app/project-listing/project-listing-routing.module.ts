@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./tinder-style/tinder-style.module').then( m => m.TinderStylePageModule)
+        loadChildren: () => import('./regular-listing/regular-listing.module').then( m => m.RegularListingPageModule)
       },
       {
         path: 'tinder-style',

@@ -8,6 +8,7 @@
       <ion-col >
         <h2>List of Favorites</h2>
         <p *ngIf="data.length" >Here you can find a list of my GitHub projects that you added to Favorites!</p>
+        <ion-item *ngIf="data.length" lines="none" ><ion-icon name="eye" slot="start"></ion-icon> Click on a project to see more!</ion-item>
       </ion-col>
     </ion-row>
     <ion-row *ngIf="data.length" >

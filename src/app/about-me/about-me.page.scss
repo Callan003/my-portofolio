@@ -26,3 +26,23 @@
     max-width: 600px;
     margin: auto;
 }
+
+.signature {
+  transform: rotate(-30deg);
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+#svg_9 {
+  stroke: var(--ion-color-dark);
+  stroke-dasharray: 529;
+  stroke-dashoffset: 529;
+  animation: sign 4s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes sign {
+  to {
+      stroke-dashoffset: 0;
+  }
+}

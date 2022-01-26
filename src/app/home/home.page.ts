@@ -29,11 +29,9 @@ export class HomePage implements OnInit {
   fetchData() {
     this.http.get(`https://lichess.org/api/user/Callan003`).subscribe((res: any) => {
       this.lichessProfileInfo = res;
-      console.log(this.lichessProfileInfo);
   });
     this.http.get(`https://api.github.com/users/Callan003`).subscribe((res: any) => {
       this.gitHubProfileInfo = res;
-      console.log(this.gitHubProfileInfo);
   });
   if(!this.stackoverflowLimitExceeded) {
     this.http.get(`https://api.stackexchange.com/2.3/users/15947768?order=desc&sort=reputation&site=stackoverflow`).subscribe((res: any) => {
@@ -41,12 +39,10 @@ export class HomePage implements OnInit {
       if(res.quota_remaining > 1){
         this.stackoverflowLimitExceeded;
       }
-      console.log(this.stackoverflowProfileInfo);
   });
   }
     this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).subscribe((res: any) => {
       this.listOfItems = res;
-      console.log(res);
     });
   }
 

@@ -26,22 +26,18 @@ export class TinderStylePage implements OnInit {
 
   ngOnInit(): void {
     this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).subscribe((res: any) => {
-      console.log(res);
       this.listOfItems = res;
       this.changeDetector.detectChanges();
       this.updateCards();
-      console.log(this.swipeNegativeIcon);
     });
   }
 
   updateCards() {
-    console.log('update cards');
     const cardArray = this.cards.toArray();
     this.useSwipe(cardArray);
   }
 
   useSwipe(cardArray) {
-    console.log(cardArray);
     for(let i = 0; i < cardArray.length; i++) {
       const card = cardArray[i];
       console.log(card);
