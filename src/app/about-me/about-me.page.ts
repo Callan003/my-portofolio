@@ -5,6 +5,7 @@ import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } 
 import { FavoriteService } from '../services/favorite.service';
 import { SwiperComponent } from 'swiper/angular';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
+import * as confetti from 'canvas-confetti';
 
 @Component({
   selector: 'app-about-me',
@@ -51,6 +52,7 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     this.fetchData();
     this.favorites = this.favoriteService.getFavorites();
     this.startAnimation();
+    this.doConfetti();
   }
 
   ngAfterContentChecked(): void {
@@ -175,5 +177,27 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     if (this.scrollPosition < (((currentScrollDepth * 100) / scrollHeight) / 100)) {
       this.scrollPosition = (((currentScrollDepth * 100) / scrollHeight) / 100);
     }
+  }
+
+  doConfetti() {
+
+    confetti.create(this.signature, {resize: true})({
+      shapes: ['square'],
+      particleCount: 100,
+      angle: 60,
+      origin: {
+        x: 0,
+        y: 1
+      }
+    });
+    confetti.create(this.signature, {resize: true})({
+      shapes: ['square'],
+      particleCount: 100,
+      angle: 120,
+      origin: {
+        x: 1,
+        y: 1
+      }
+    });
   }
 }
