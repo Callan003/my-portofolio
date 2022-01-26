@@ -27,7 +27,8 @@
         <ion-item lines="none">
           <ion-icon slot="start" name="heart" class="favorite-heart" color="dark"></ion-icon>
           <ion-text>
-            <i>Go to <a href="home">Home</a> page and add projects to your Favorites list by clicking the hearth icon!</i>
+            <i>Go to Github projects page - <a href="project-listing/regular-listing"><ion-icon name="list"></ion-icon> Regular Listing </a> or 
+              <a href="project-listing/tinder-style"><ion-icon name="flame"></ion-icon> Tinder style</a> - and add projects to your Favorites list by clicking the hearth icon or by swipping right!</i>
          </ion-text> 
         </ion-item>
       </ion-col>
@@ -35,7 +36,7 @@
     <ion-row *ngIf="!data.length" >
       <ion-col>
         <ion-buttons>
-          <ion-button strong="true" href="home" shape="round" color="danger" expand="block" fill="clear" size="large">
+          <ion-button strong="true" href="project-listing/tinder-style" shape="round" color="danger" expand="block" fill="clear" size="large">
             <ion-icon slot="end" name='heart'></ion-icon>
             Let's go!
           </ion-button>
