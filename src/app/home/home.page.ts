@@ -1,6 +1,7 @@
 import { FavoriteService } from './../services/favorite.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+
+  @ViewChild(IonRouterOutlet, {static: true}) routerOutlet: IonRouterOutlet;
+
   listOfItems: any[];
   gitHubProfileInfo: any;
   stackoverflowProfileInfo: any;
@@ -18,7 +22,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
     ) {}
 
   ngOnInit(): void {
