@@ -35,6 +35,8 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     loop: true,
   }
   public scrollPosition = 0;
+  animationInProgress = false;
+  stopAnimation = false;
 
 
   constructor(
@@ -48,12 +50,23 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
   ngOnInit(): void {
     this.fetchData();
     this.favorites = this.favoriteService.getFavorites();
+    this.startAnimation();
   }
 
   ngAfterContentChecked(): void {
     if (this.swiper) {
       this.swiper.updateSwiper({});
     }
+  }
+
+  startAnimation() {
+    if(this.animationInProgress) return;
+    this.animationInProgress = true;
+    setTimeout(() => {
+      this.swiper.swiperRef.slideNext(2000);
+      this.animationInProgress = false;
+      this.startAnimation();
+    }, 5000);
   }
 
   fetchData() {
@@ -86,11 +99,11 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
   }
 
   next() {
-    this.swiper.swiperRef.slideNext(200);
+    this.swiper.swiperRef.slideNext(1000);
   }
 
   prev() {
-    this.swiper.swiperRef.slidePrev(200);
+    this.swiper.swiperRef.slidePrev(1000);
   }
 
   copyToClipboard(text: string) {

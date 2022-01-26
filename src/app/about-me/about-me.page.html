@@ -24,9 +24,9 @@
             </svg>
             <br/>
             <h2><strong>Some of the technologies I use:</strong></h2>
-            <ion-row class="ion-padding">
+            <ion-row class="ion-padding-vertical">
               <ion-col (click)="prev()" size="1" class="ion-text-start">
-                <ion-icon style="vertical-align: -webkit-baseline-middle;" name="chevron-back" ></ion-icon>
+                <ion-icon class="arrows" name="chevron-back"></ion-icon>
               </ion-col>
               <ion-col size="10" class="ion-text-center">
                 <swiper #swiper [config]="config">
@@ -36,7 +36,7 @@
                 </swiper>
               </ion-col>
               <ion-col (click)="next()" size="1" class="ion-text-end">
-                <ion-icon style="vertical-align: -webkit-baseline-middle;" name="chevron-forward" ></ion-icon>
+                <ion-icon class="arrows" name="chevron-forward" ></ion-icon>
               </ion-col>
             </ion-row>
 

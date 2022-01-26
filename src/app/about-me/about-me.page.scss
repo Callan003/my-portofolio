@@ -27,6 +27,12 @@
     margin: auto;
 }
 
+.arrows {
+  vertical-align: -webkit-baseline-middle;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 .signature {
   transform: rotate(-30deg);
   display: block;
