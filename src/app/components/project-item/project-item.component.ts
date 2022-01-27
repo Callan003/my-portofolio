@@ -31,7 +31,8 @@ export class ProjectItemComponent implements OnInit {
       name: project?.name,
       description: project?.description,
       created_at: project.created_at,
-      stargazers_count: project.stargazers_count
+      stargazers_count: project.stargazers_count,
+      default_branch: project.default_branch
     }
     this.favoriteService.toggleFavorites(favoriteDto);
   }
