@@ -48,7 +48,7 @@ export class AppComponent {
     });
   }
 
-  reorderItems(event: CustomEvent<ItemReorderEventDetail>): void {
+  reorderItems(event: any): void {
     this.showDragMeInfo = false;
     const itemMove = this.menuItems.splice(event.detail.from, 1)[0];
     this.menuItems.splice(event.detail.to, 0, itemMove);

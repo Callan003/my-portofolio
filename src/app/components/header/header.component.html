@@ -1,7 +1,26 @@
-<ion-toolbar>
+<ion-toolbar id="mobile-header" *ngIf="mobileMenu" >
   <ion-buttons slot="start">
     <ion-menu-button auto-hide="false"></ion-menu-button>
   </ion-buttons>
+  <ion-buttons slot="secondary">
+    <p *ngIf="theme === 'light' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'light'}">Let there be light!</p>
+    <p *ngIf="theme === 'dark' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'dark'}">Welcome to the dark side!</p>
+    <ion-button (click)="changeTheme()">
+      <ion-icon slot="icon-only" [name]="themeIcon"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-toolbar id="desktop-header" *ngIf="!mobileMenu">
+  <!-- <ion-icon class="logo" src="../../../assets/icon/laptop_infinity.svg" size="large"></ion-icon> -->
+  <div class="desktop-menu-buttons">
+    <ion-button *ngFor="let item of menuItems" class="menu-item-button ion-text-capitalize" fill="clear"  [routerLink]="'../' + item?.link" routerDirection="root" routerLinkActive="selected"
+    [routerLinkActiveOptions]="{exact: true}">
+      <ion-icon [name]="item.icon" slot="start"></ion-icon>
+      <ion-label>{{item.name}}</ion-label>
+    </ion-button>
+  </div>
+
   <ion-buttons slot="secondary">
     <p *ngIf="theme === 'light' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'light'}">Let there be light!</p>
     <p *ngIf="theme === 'dark' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'dark'}">Welcome to the dark side!</p>

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ProjectSwipeableItemComponent } from './project-swipeable-item/project-swipeable-item.component';
 import { HeaderComponent } from './header/header.component';
 import { SocialAccordionComponent } from './social-accordion/social-accordion.component';
@@ -12,7 +13,8 @@ import { IonicModule } from '@ionic/angular';
   declarations: [ProjectItemComponent, SocialAccordionComponent, HeaderComponent, ProjectSwipeableItemComponent],
   imports: [
     IonicModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [ProjectItemComponent, SocialAccordionComponent, HeaderComponent, ProjectSwipeableItemComponent]
 })
