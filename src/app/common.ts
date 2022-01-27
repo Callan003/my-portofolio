@@ -31,13 +31,13 @@ export const MenuItems = [
     name: 'Home',
     link: 'home'
     }, {
+    icon: 'person',
+    name: 'About Me',
+    link: 'about-me'
+    }, {
      icon: 'logo-github',
      name: 'Github Projects',
      link: 'project-listing'
-    }, {
-     icon: 'person',
-     name: 'About Me',
-     link: 'about-me'
     }, {
     icon: 'heart',
     name: 'Favorites',

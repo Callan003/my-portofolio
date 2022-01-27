@@ -14,7 +14,7 @@
 <ion-toolbar id="desktop-header" *ngIf="!mobileMenu">
   <!-- <ion-icon class="logo" src="../../../assets/icon/laptop_infinity.svg" size="large"></ion-icon> -->
   <div class="desktop-menu-buttons">
-    <ion-button *ngFor="let item of menuItems" class="menu-item-button ion-text-capitalize" fill="clear"  [routerLink]="'../' + item?.link" routerDirection="root" routerLinkActive="selected"
+    <ion-button *ngFor="let item of menuItems" class="menu-item-button ion-text-capitalize" fill="clear"  [routerLink]="'/' + item?.link" routerDirection="root" routerLinkActive="selected"
     [routerLinkActiveOptions]="{exact: true}">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
       <ion-label>{{item.name}}</ion-label>
