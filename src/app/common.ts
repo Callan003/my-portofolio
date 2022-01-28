@@ -90,9 +90,9 @@ export const ThingsToDo = [
     },
     {
         id: 4,
-        text: "Add a project to your Favorites",
+        text: "Change the theme!",
         isDone: false,
-        icon: "heart"
+        icon: (localStorage.getItem(ThemeAttribute) === Themes.LIGHT ? ThemeIcons.LIGHT : ThemeIcons.DARK) 
     },
     {
         id: 5,

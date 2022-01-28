@@ -1,3 +1,4 @@
+import { ThingsToDoService } from './../services/things-to-do.service';
 import { Platform, ToastController } from '@ionic/angular';
 import { Technologies, ContactData } from './../common';
 import { HttpClient } from '@angular/common/http';
@@ -45,7 +46,8 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     private http: HttpClient,
     private favoriteService: FavoriteService,
     private toastController: ToastController,
-    private platform: Platform
+    private platform: Platform,
+    private thingsToDoService: ThingsToDoService
     ) {}
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     this.favorites = this.favoriteService.getFavorites();
     this.startAnimation();
     this.doConfetti();
+    this.thingsToDoService.setThingDone(0);
   }
 
   ngAfterContentChecked(): void {

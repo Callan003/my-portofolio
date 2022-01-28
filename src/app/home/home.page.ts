@@ -1,3 +1,4 @@
+import { ThingsToDoService } from './../services/things-to-do.service';
 import { ThingsToDo } from './../common';
 import { FavoriteService } from './../services/favorite.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -26,6 +27,7 @@ export class HomePage implements OnInit {
   constructor(
     private http: HttpClient,
     private favoriteService: FavoriteService,
+    private thingsToDoService: ThingsToDoService,
     private router: Router
     ) {}
 
@@ -65,7 +67,6 @@ export class HomePage implements OnInit {
   }
 
   goToThingsToDo($event) {
-    console.log($event);
 
     switch($event.id) {
       case 0:
@@ -91,26 +92,17 @@ export class HomePage implements OnInit {
 
     }
 
-
-    const thingsDone = JSON.parse(localStorage.getItem('thingsDone')) || [];
-
-    thingsDone.push($event.id);
-    localStorage.setItem('thingsDone', JSON.stringify(thingsDone));
-    this.getThingsToDoFromLS();
+    this.thingsToDoService.setThingDone($event.id);
 
   }
 
   getThingsToDoFromLS() {
-    const thingsDone = JSON.parse(localStorage.getItem('thingsDone')) || [];
-
-    thingsDone.forEach(thing => this.thingsToDo[thing].isDone = true);
-
+    this.thingsToDo = this.thingsToDoService.getThingsToDoFromLS();
+    console.log(this.thingsToDo);
+    // this.thingsToDoService.localThingsToDoSubscriber.subscribe((res: any) => this.thingsToDo = res);
   }
 
   resetThingsToDo() {
-    localStorage.removeItem('thingsDone');
-    this.thingsToDo.forEach(thing => thing.isDone = false);
-
-    this.getThingsToDoFromLS();
+    this.thingsToDoService.resetThingsToDo();
   }
 }

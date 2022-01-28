@@ -2,6 +2,7 @@ import { MenuController, Platform } from '@ionic/angular';
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MenuItems, ThemeAttribute, ThemeIcons, Themes } from 'src/app/common';
+import { ThingsToDoService } from 'src/app/services/things-to-do.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   constructor(    
     @Inject(DOCUMENT) private document: Document,
     private platform: Platform,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private thingsToDoService: ThingsToDoService
     ) {
     this.theme = localStorage.getItem(ThemeAttribute) as Themes || Themes.DARK;
     document.body.setAttribute(ThemeAttribute, this.theme);
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   changeTheme(): void {
+    this.thingsToDoService.setThingDone(4);
     this.changeThemeButtonClicked = true;
     switch(this.theme) {
       case Themes.DARK: 

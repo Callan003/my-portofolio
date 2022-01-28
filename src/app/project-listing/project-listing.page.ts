@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { ThingsToDoService } from './../services/things-to-do.service';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,6 +7,12 @@ import { Component} from '@angular/core';
   templateUrl: './project-listing.page.html',
   styleUrls: ['./project-listing.page.scss'],
 })
-export class ProjectListingPage {
+export class ProjectListingPage implements OnInit {
+
+  constructor(private thingsToDoService: ThingsToDoService){}
+
+  ngOnInit(): void {
+    this.thingsToDoService.setThingDone(1);
+  }
 
 }

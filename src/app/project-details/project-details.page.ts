@@ -1,3 +1,4 @@
+import { ThingsToDoService } from './../services/things-to-do.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -30,7 +31,8 @@ export class ProjectDetailsPage implements OnInit {
     private route: ActivatedRoute,
     private mdService: MarkdownService,
     public alertController: AlertController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private thingsToDoService: ThingsToDoService
     ) { }
     
 
@@ -50,6 +52,7 @@ export class ProjectDetailsPage implements OnInit {
     ).subscribe((result: any) => {
       this.createPieChart(result);
     });
+    this.thingsToDoService.setThingDone(2)
   }
 
   getImageSrc(date: string): string {

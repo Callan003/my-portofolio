@@ -1,3 +1,4 @@
+import { ThingsToDoService } from './../../services/things-to-do.service';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { GestureController, Platform } from '@ionic/angular';
@@ -21,7 +22,8 @@ export class TinderStylePage implements OnInit {
     private gestureCtrl: GestureController,
     private changeDetector : ChangeDetectorRef,
     private plt: Platform,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private thingsToDoService: ThingsToDoService
     ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class TinderStylePage implements OnInit {
       this.listOfItems = res;
       this.changeDetector.detectChanges();
       this.updateCards();
+      this.thingsToDoService.setThingDone(3);
     });
   }
 
@@ -40,7 +43,6 @@ export class TinderStylePage implements OnInit {
   useSwipe(cardArray) {
     for(let i = 0; i < cardArray.length; i++) {
       const card = cardArray[i];
-      console.log(card);
       const style = card.nativeElement.style;
  
       const swipe = this.gestureCtrl.create({
