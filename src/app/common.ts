@@ -61,4 +61,43 @@ export const ContactData = [
     { icon: 'mail', url: 'cali_stroescu@yahoo.com', type: 'email', name: 'cali_stroescu@yahoo.com' },
     { icon: 'logo-linkedin', url: 'https://www.linkedin.com/in/marian-calin-stroescu-440735b6/', type: 'social', name: 'Marian-Calin Stroescu'},
     { icon: 'logo-facebook', url: 'https://www.facebook.com/calin.callan', type: 'social', name: 'Calin Stroescu'}
-]
+];
+
+export const ThingsToDo = [
+    {
+        id: 0,
+        text: "See the About Me page",
+        isDone: false,
+        icon: "person"
+    },
+    {
+        id: 1,
+        text: "See the Github Projects page",
+        isDone: false,
+        icon: "logo-github"
+    },
+    {
+        id: 2,
+        text: "See a Project Details page",
+        isDone: false,
+        icon: "search"
+    },
+    {
+        id: 3,
+        text: "Try the Tinder Style listing",
+        isDone: false,
+        icon: "flame"
+    },
+    {
+        id: 4,
+        text: "Add a project to your Favorites",
+        isDone: false,
+        icon: "heart"
+    },
+    {
+        id: 5,
+        text: "See Favorites page",
+        isDone: false,
+        icon: "heart"
+    },
+];

@@ -5,4 +5,84 @@
 //     max-height: 300px;
 //     max-width: 400px;
 //   }
-// }
+// }.
+
+.center-col-content {
+  ion-col {
+    display: flex;
+    justify-content: center;
+  }  
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    min-width: 300px;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    background-color: var(--ion-card-background);
+    color: var(--ion-color-dark);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    h1 {
+        margin: 0;
+    }
+  }
+  
+  .flip-card-back {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--ion-card-background);
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: 16px;
+    img {
+        width: calc(100% - 32px);
+        height: calc(100% - 32px);
+        min-width: 280px;
+        min-height: 280px;
+    }
+    
+  }
+  .bg-black {
+      background-color: black;
+  }
+
+  .about-me-list {
+    min-width: 80%;
+  }
+
+
+ .thingsToDoCard {
+    min-height: 400px;
+ }

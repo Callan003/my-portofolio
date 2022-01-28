@@ -7,6 +7,81 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-grid class="center-grid">
+    <ion-row class="center-col-content">
+      <ion-col>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Hello there!</h1>
+            </div>
+            <div class="flip-card-back bg-black">
+              <img src="../../assets/images/general_kenobi.gif" alt="general_kenobi">
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>About Me</h1>
+            </div>
+            <div class="flip-card-back">
+              <ion-list lines="none" class="about-me-list">
+                <ion-item>
+                  <ion-label>Name</ion-label>
+                  <ion-text slot="end">Marian-Calin Stroescu</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Profession</ion-label>
+                  <ion-text slot="end">Web Developer</ion-text>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Power Level</ion-label>
+                  <ion-text slot="end">Over 9000</ion-text>
+                </ion-item>
+                <ion-item class="ion-margin-top">
+                  <ion-button routerLink="/about-me" shape="round" color='dark' fill="clear" expand="full" class="w-100 h-40">
+                    <ion-icon name="eye" slot="start"></ion-icon>
+                    <ion-label>
+                      See more
+                    </ion-label>
+                  </ion-button>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="flip-card thingsToDoCard">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h1>Things to do</h1>
+            </div>
+            <div class="flip-card-back">
+              <ion-list lines="none" class="about-me-list">
+                  <ion-item *ngFor="let item of thingsToDo" (click)="goToThingsToDo(item)" [disabled]="item.isDone" class="ion-activatable ripple-parent">
+                    <ion-icon  class="ion-margin-end" [name]="item.icon"></ion-icon>
+                    <ion-label>{{item.text}}</ion-label>
+                    <ion-icon slot="end" [name]="item.isDone ? 'checkmark-circle' : 'ellipse-outline'" [color]="item.isDone? 'success' : ''"></ion-icon>
+                    <ion-ripple-effect></ion-ripple-effect>
+                  </ion-item>
+                  <ion-item>
+                    <!-- <ion-button fill="clear" color="dark" class="h-40" disabled>
+                      <ion-icon name="gift" size="large" disabled></ion-icon>
+                    </ion-button> -->
+                    <ion-button (click)="resetThingsToDo()" slot="end" fill="clear" color="dark">
+                      <ion-icon name="refresh" slot="start"></ion-icon>
+                      Reset
+                    </ion-button>
+                  </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
         <ion-card>

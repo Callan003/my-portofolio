@@ -7,16 +7,16 @@
     <ion-row>
       <ion-col >
         <h2>List of Favorites</h2>
-        <p *ngIf="data.length" >Here you can find a list of my GitHub projects that you added to Favorites!</p>
-        <ion-item *ngIf="data.length" lines="none" ><ion-icon name="eye" slot="start"></ion-icon> Click on a project to see more!</ion-item>
+        <p *ngIf="data?.length" >Here you can find a list of my GitHub projects that you added to Favorites!</p>
+        <ion-item *ngIf="data?.length" lines="none" ><ion-icon name="eye" slot="start"></ion-icon> Click on a project to see more!</ion-item>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="data.length" >
+    <ion-row *ngIf="data?.length" >
       <ion-col *ngFor="let item of data" >
         <app-project-item [item]="item"></app-project-item>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="!data.length">
+    <ion-row *ngIf="!data?.length">
       <ion-col>
         <ion-item lines="none" class="ion-padding-bottom">
           <ion-icon slot="end" size="large" color="dark" name="sad-outline"></ion-icon>
@@ -33,7 +33,7 @@
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="!data.length" >
+    <ion-row *ngIf="!data?.length" >
       <ion-col>
         <ion-buttons>
           <ion-button strong="true" href="project-listing/tinder-style" shape="round" color="danger" expand="block" fill="clear" size="large">
