@@ -1,5 +1,5 @@
 import { ThingsToDoService } from './../services/things-to-do.service';
-import { ThingsToDo } from './../common';
+import { ThemeIcons, ThingsToDo } from './../common';
 import { FavoriteService } from './../services/favorite.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   @ViewChild(IonRouterOutlet, {static: true}) routerOutlet: IonRouterOutlet;
+  @ViewChild('header') header: any;
 
   listOfItems: any[];
   gitHubProfileInfo: any;
@@ -82,7 +83,9 @@ export class HomePage implements OnInit {
         this.router.navigate(['project-listing/tinder-style']);
         break;
       case 4:
-        this.router.navigate(['about-me']);
+        console.log(this.header);
+        this.thingsToDo[4].icon = this.thingsToDo[4].icon === ThemeIcons.DARK ? ThemeIcons.LIGHT : ThemeIcons.DARK;
+        this.header.changeTheme();
         break;
       case 5:
         this.router.navigate(['favorites']);
@@ -98,8 +101,6 @@ export class HomePage implements OnInit {
 
   getThingsToDoFromLS() {
     this.thingsToDo = this.thingsToDoService.getThingsToDoFromLS();
-    console.log(this.thingsToDo);
-    // this.thingsToDoService.localThingsToDoSubscriber.subscribe((res: any) => this.thingsToDo = res);
   }
 
   resetThingsToDo() {

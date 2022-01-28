@@ -1,4 +1,4 @@
-<ion-toolbar id="mobile-header" *ngIf="mobileMenu" >
+<ion-toolbar id="mobile-header" *ngIf="mobileMenu" mode="md" >
   <ion-buttons slot="start">
     <ion-menu-button auto-hide="false"></ion-menu-button>
   </ion-buttons>
@@ -6,7 +6,7 @@
     <p *ngIf="theme === 'light' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'light'}">Let there be light!</p>
     <p *ngIf="theme === 'dark' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'dark'}">Welcome to the dark side!</p>
     <ion-button (click)="changeTheme()">
-      <ion-icon slot="icon-only" [name]="themeIcon"></ion-icon>
+      <ion-icon slot="end" [name]="themeIcon" color="dark"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-toolbar>
@@ -25,7 +25,7 @@
     <p *ngIf="theme === 'light' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'light'}">Let there be light!</p>
     <p *ngIf="theme === 'dark' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'dark'}">Welcome to the dark side!</p>
     <ion-button (click)="changeTheme()">
-      <ion-icon slot="icon-only" [name]="themeIcon"></ion-icon>
+      <ion-icon slot="end" [name]="themeIcon" color="dark"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-toolbar>

@@ -4,15 +4,21 @@
       pullingIcon="chevron-down-circle-outline"
       pullingText="Pull to refresh"
       refreshingSpinner="circles"
-      refreshingText="Refreshing... custom 5000ms delay">
+      refreshingText="Refreshing... custom 3000ms delay">
     </ion-refresher-content>
   </ion-refresher>
   <ion-grid class="center-grid">
+    <ion-row>
+      <ion-col>
+        <h3 class="ion-padding-horizontal">Here you can find a list of all my public Github Projects</h3>
+        <h5 class="ion-padding-horizontal"><i>It ain't much, but it's honest work!</i></h5>
+      </ion-col>
+    </ion-row>
     <ion-row *ngIf="!itemsLoaded" class="ion-text-center">
       <ion-col>
         <ion-spinner></ion-spinner>
         <p>Loading projects...</p>
-        <i>Added custom delay of 5000ms to test spinner functionality</i>
+        <i>Added custom delay of 3000ms to test spinner functionality</i>
       </ion-col>
     </ion-row>
     <ion-row *ngIf="itemsLoaded" >

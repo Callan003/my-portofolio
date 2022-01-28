@@ -86,3 +86,22 @@
  .thingsToDoCard {
     min-height: 400px;
  }
+
+ .cursor-pointer {
+     cursor: pointer;
+ }
+
+ .ion-no-margin {
+     margin: 0;
+ }
+
+ .status-card {
+     min-width: 285px;
+ }
+
+ ion-list {
+     background-color: var(--ion-card-background);
+     ion-item {
+        background-color: var(--ion-card-background);
+     }
+ }

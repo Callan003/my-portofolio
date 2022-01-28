@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  changeTheme(): void {
+  public changeTheme(): void {
     this.thingsToDoService.setThingDone(4);
     this.changeThemeButtonClicked = true;
     switch(this.theme) {

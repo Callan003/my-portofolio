@@ -21,7 +21,7 @@ export class RegularListingPage implements OnInit {
   }
 
   loadProjects(refresh?) {
-    this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).pipe(delay(5000)).subscribe((res: any) => {
+    this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).pipe(delay(3000)).subscribe((res: any) => {
       this.itemsLoaded = true;
       this.listOfItems = res;
       this.changeDetector.detectChanges();
