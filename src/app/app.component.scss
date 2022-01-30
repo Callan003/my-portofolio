@@ -33,3 +33,11 @@ ion-menu.md ion-item.selected {
 ion-menu.md ion-item.selected ion-icon {
   color: var(--ion-color-primary);
 }
+
+ion-menu.ios ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
