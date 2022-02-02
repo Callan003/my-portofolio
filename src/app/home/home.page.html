@@ -57,7 +57,7 @@
         </div>
       </ion-col>
       <ion-col size="12">
-        <div class="flip-card thingsToDoCard">
+        <!-- <div class="flip-card thingsToDoCard">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <h1>Explore</h1>
@@ -79,7 +79,24 @@
               </ion-list>
             </div>
           </div>
-        </div>
+        </div> -->
+        <div class="simple-card thingsToDoCard">
+              <h1 class="ion-text-center">Explore</h1>
+              <ion-list lines="none" class="about-me-list">
+                  <ion-item *ngFor="let item of thingsToDo" (click)="goToThingsToDo(item)" [disabled]="item.isDone" class="ion-activatable ripple-parent cursor-pointer">
+                    <ion-icon  class="ion-margin-end" [name]="item.icon"></ion-icon>
+                    <ion-label [ngClass]="{'strike' : item.isDone}">{{item.text}}</ion-label>
+                    <ion-icon slot="end" [name]="item.isDone ? 'checkmark-circle' : 'ellipse-outline'" [color]="item.isDone? 'success' : ''"></ion-icon>
+                    <ion-ripple-effect></ion-ripple-effect>
+                  </ion-item>
+                  <ion-item>
+                    <ion-button (click)="resetThingsToDo()" slot="end" fill="clear" color="dark" class="h-40">
+                      <ion-icon name="refresh" slot="start"></ion-icon>
+                      Reset
+                    </ion-button>
+                  </ion-item>
+              </ion-list>
+            </div>
       </ion-col>
     </ion-row>
     <ion-row>
