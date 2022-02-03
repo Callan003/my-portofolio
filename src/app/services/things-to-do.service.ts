@@ -25,9 +25,12 @@ export class ThingsToDoService {
   setThingDone(thing) {
     const thingsDone = JSON.parse(localStorage.getItem('thingsDone')) || [];
 
+   if(!thingsDone.find(thingDone => thingDone === thing) && thingsDone.find(thingDone => thingDone === thing) !== 0) {
+
     thingsDone.push(thing);
     localStorage.setItem('thingsDone', JSON.stringify(thingsDone));
     this.getThingsToDoFromLS();
+   }
   }
 
   resetThingsToDo() {

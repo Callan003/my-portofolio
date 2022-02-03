@@ -7,6 +7,7 @@ import { FavoriteService } from '../services/favorite.service';
 import { SwiperComponent } from 'swiper/angular';
 import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
 import * as confetti from 'canvas-confetti';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-about-me',
@@ -47,10 +48,12 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     private favoriteService: FavoriteService,
     private toastController: ToastController,
     private platform: Platform,
-    private thingsToDoService: ThingsToDoService
+    private thingsToDoService: ThingsToDoService,
+    private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void {
+    this.displayRecursionMessage();
     this.fetchData();
     this.favorites = this.favoriteService.getFavorites();
     this.startAnimation();
@@ -61,6 +64,18 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
   ngAfterContentChecked(): void {
     if (this.swiper) {
       this.swiper.updateSwiper({});
+    }
+  }
+
+  async displayRecursionMessage() {
+    if (this.route.snapshot.queryParamMap.get('recursion')) {
+      const toast = await this.toastController.create({
+        position: 'middle',
+        icon: 'infinite',
+        message: `That my friend, it's called "recursion"!`,
+        duration: 4000
+      });
+      toast.present();
     }
   }
 
@@ -92,6 +107,10 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     this.http.get(`https://api.github.com/users/Callan003/repos`, {params: {sort: 'created'}}).subscribe((res: any) => {
       this.listOfItems = res;
     });
+  }
+
+  alertRecurssion() {
+    alert('That my friend, is called "recursion"!');
   }
 
   doRefresh(event) {

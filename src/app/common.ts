@@ -58,6 +58,7 @@ export const Technologies = [
 ]
 
 export const ContactData = [
+    { icon: 'earth', url: '/about-me?recursion=true', type: 'website', name: 'www.mcstroescu.com'},
     { icon: 'mail', url: 'cali_stroescu@yahoo.com', type: 'email', name: 'cali_stroescu@yahoo.com' },
     { icon: 'logo-linkedin', url: 'https://www.linkedin.com/in/marian-calin-stroescu-440735b6/', type: 'social', name: 'Marian-Calin Stroescu'},
     { icon: 'logo-facebook', url: 'https://www.facebook.com/calin.callan', type: 'social', name: 'Calin Stroescu'}
