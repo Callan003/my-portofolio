@@ -314,3 +314,9 @@
 .border-radius-16 {
   border-radius: 16px;
 }
+
+.achievement-alert {
+  ion-backdrop {
+    --backdrop-opacity: 0.1
+  }
+}

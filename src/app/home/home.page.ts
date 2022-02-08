@@ -1,5 +1,6 @@
+import { AchievementService } from './../services/achievement.service';
 import { ThingsToDoService } from './../services/things-to-do.service';
-import { ThemeIcons, ThingsToDo } from './../common';
+import { AchievementId, ThemeIcons, ThingsToDo } from './../common';
 import { FavoriteService } from './../services/favorite.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -29,7 +30,8 @@ export class HomePage implements OnInit {
     private http: HttpClient,
     private favoriteService: FavoriteService,
     private thingsToDoService: ThingsToDoService,
-    private router: Router
+    private router: Router,
+    private achievementService: AchievementService
     ) {}
 
   ngOnInit(): void {
@@ -105,5 +107,13 @@ export class HomePage implements OnInit {
 
   resetThingsToDo() {
     this.thingsToDoService.resetThingsToDo();
+  }
+
+  areAllThingsDone() {
+    return !this.thingsToDo.find(item => item.isDone === false);
+  }
+
+  receiveGift() {
+    this.achievementService.increaseAchievementProgress(AchievementId.EXPLORER);
   }
 }

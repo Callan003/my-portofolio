@@ -1,9 +1,11 @@
+import { AchievementService } from './../../services/achievement.service';
 import { ThingsToDoService } from './../../services/things-to-do.service';
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { GestureController, Platform } from '@ionic/angular';
 import { ProjectSwipeableItemComponent } from 'src/app/components/project-swipeable-item/project-swipeable-item.component';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { AchievementId } from 'src/app/common';
 
 @Component({
   selector: 'app-tinder-style',
@@ -23,7 +25,8 @@ export class TinderStylePage implements OnInit {
     private changeDetector : ChangeDetectorRef,
     private plt: Platform,
     private favoriteService: FavoriteService,
-    private thingsToDoService: ThingsToDoService
+    private thingsToDoService: ThingsToDoService,
+    private achievementService: AchievementService
     ) { }
 
   ngOnInit(): void {
@@ -78,11 +81,14 @@ export class TinderStylePage implements OnInit {
             this.swipePositiveIcon.el.style.opacity = 1;
             this.swipePositiveIcon.el.style.color = 'var(--ion-color-danger)';
             this.favoriteService.addToFavorites(this.listOfItems[i]);
+            this.achievementService.increaseAchievementProgress(AchievementId.SWIPPER);
+
           } else if (ev.deltaX < -150) {
             this.swipeNegativeIcon.el.style.opacity = 1;
             this.swipeNegativeIcon.el.style.color = 'var(--ion-color-danger)';
             style.transform = `translateX(-${this.plt.width() * 2}px) rotate(${ev.deltaX / 2}deg)`;
             this.favoriteService.removeFromFavorites(this.listOfItems[i]);
+            this.achievementService.increaseAchievementProgress(AchievementId.SWIPPER);
           } else {
             style.transform = '';
           }

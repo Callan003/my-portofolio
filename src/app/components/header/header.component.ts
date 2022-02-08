@@ -1,7 +1,8 @@
+import { AchievementService } from './../../services/achievement.service';
 import { MenuController, Platform } from '@ionic/angular';
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
-import { MenuItems, ThemeAttribute, ThemeIcons, Themes } from 'src/app/common';
+import { AchievementId, MenuItems, ThemeAttribute, ThemeIcons, Themes } from 'src/app/common';
 import { ThingsToDoService } from 'src/app/services/things-to-do.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class HeaderComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private platform: Platform,
     private menuController: MenuController,
-    private thingsToDoService: ThingsToDoService
+    private thingsToDoService: ThingsToDoService,
+    private achievementService: AchievementService
     ) {
     this.theme = localStorage.getItem(ThemeAttribute) as Themes || Themes.DARK;
     document.body.setAttribute(ThemeAttribute, this.theme);
@@ -52,6 +54,7 @@ export class HeaderComponent implements OnInit {
 
   public changeTheme(): void {
     this.thingsToDoService.setThingDone(4);
+    this.achievementService.increaseAchievementProgress(AchievementId.DAYNIGHT);
     this.changeThemeButtonClicked = true;
     switch(this.theme) {
       case Themes.DARK: 
