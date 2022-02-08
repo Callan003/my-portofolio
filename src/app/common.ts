@@ -41,7 +41,12 @@ export const MenuItems = [
     }, {
     icon: 'heart',
     name: 'Favorites',
-    link: 'favorites'}
+    link: 'favorites'
+    }, {
+    icon: 'trophy',
+    name: 'Achievements',
+    link: 'achievements'
+    }
 ]
 
 export const Technologies = [
@@ -101,4 +106,92 @@ export const ThingsToDo = [
         isDone: false,
         icon: "heart"
     },
+];
+
+export interface Achievement {
+    id: number,
+    title: string,
+    description: string,
+    level: number,
+    limit: number[],
+    progress: number
+}
+
+export enum Achievements {
+    EXPLORER = 'Explorer',
+    FAVORITE = 'Favorite',
+    SWIPPER = 'Swipper',
+    CONFETTI = 'Confetti',
+    DAYNIGHT = 'DayNight',
+    GITHUB = 'Github',
+    STACKOVERFLOW = 'Stackoverflow'
+}
+
+export enum AchievementId {
+    EXPLORER = 0,
+    FAVORITE = 1,
+    SWIPPER = 2,
+    CONFETTI = 3,
+    DAYNIGHT = 4,
+    GITHUB = 5,
+    STACKOVERFLOW = 6
+}
+
+export const AchievementList: Achievement[] = [
+    {
+        id: AchievementId.EXPLORER,
+        title: Achievements.EXPLORER,
+        description: "Complete the Explore list",
+        limit: [1],
+        level: 0,
+        progress: 0
+    },
+    {
+        id: AchievementId.FAVORITE,
+        title: Achievements.FAVORITE,
+        description: "Add projects to your favorites",
+        limit: [1, 5, 9],
+        level: 0,
+        progress: 0
+    },
+    {
+        id: AchievementId.SWIPPER,
+        title: Achievements.SWIPPER,
+        description: "Swipe some projects",
+        limit: [1, 5, 9],
+        level: 0,
+        progress: 0
+    },
+    {
+        id: AchievementId.CONFETTI,
+        title: Achievements.CONFETTI,
+        description: "See the About me page",
+        limit: [1],
+        level: 0,
+        progress: 0
+    },
+    {
+        id: AchievementId.DAYNIGHT,
+        title: Achievements.DAYNIGHT,
+        description: "Change the theme",
+        limit: [1],
+        level: 0,
+        progress: 0
+    },
+    {
+        id: AchievementId.GITHUB,
+        title: Achievements.GITHUB,
+        description: "Go to my github profile page",
+        limit: [1],
+        level: 0,
+        progress: 0
+    },
+    {
+        id: AchievementId.STACKOVERFLOW,
+        title: Achievements.STACKOVERFLOW,
+        description: "Go to my stackoverflow profile page",
+        limit: [1],
+        level: 0,
+        progress: 0
+    }
 ];

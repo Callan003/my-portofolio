@@ -1,6 +1,8 @@
+import { AchievementService } from './achievement.service';
 import { ToastController } from '@ionic/angular';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { AchievementId } from '../common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,9 @@ export class FavoriteService {
   localFavorites;
   localFavoritesSubscriber = new Subject();
 
-  constructor(private toastController: ToastController) {
+  constructor(
+    private toastController: ToastController,
+    private achievementService: AchievementService) {
     this.localFavorites = this.getFavorites() || [];
    }
 
@@ -24,6 +28,7 @@ export class FavoriteService {
     if (this.isProjectOnFavoriteList(favorite)) return;
 
     this.localFavorites.push(favorite);
+    this.achievementService.increaseAchievementProgress(AchievementId.FAVORITE);
     localStorage.setItem('favorites', JSON.stringify(this.localFavorites));
   }
 
@@ -37,6 +42,7 @@ export class FavoriteService {
       this.localFavorites = this.localFavorites.filter(element => element?.id !== favorite?.id);
       this.presentToast('remove', favorite);
     } else {
+      this.achievementService.increaseAchievementProgress(AchievementId.FAVORITE);
       this.localFavorites.push(favorite);
       this.presentToast('add', favorite);
     }

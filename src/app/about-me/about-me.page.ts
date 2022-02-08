@@ -1,6 +1,7 @@
+import { AchievementService } from './../services/achievement.service';
 import { ThingsToDoService } from './../services/things-to-do.service';
 import { Platform, ToastController } from '@ionic/angular';
-import { Technologies, ContactData } from './../common';
+import { Technologies, ContactData, AchievementId } from './../common';
 import { HttpClient } from '@angular/common/http';
 import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FavoriteService } from '../services/favorite.service';
@@ -49,7 +50,8 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
     private toastController: ToastController,
     private platform: Platform,
     private thingsToDoService: ThingsToDoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private achievementService: AchievementService
     ) {}
 
   ngOnInit(): void {
@@ -202,6 +204,7 @@ export class AboutMePage implements OnInit, AfterContentChecked  {
   }
 
   doConfetti() {
+    this.achievementService.increaseAchievementProgress(AchievementId.CONFETTI);
 
     confetti.create(this.signature, {resize: true})({
       shapes: ['square'],

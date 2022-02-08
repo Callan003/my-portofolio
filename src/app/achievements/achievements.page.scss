@@ -1,0 +1,32 @@
+.center-content {
+    max-width: 768px;
+    margin: auto;
+}
+
+.achievement {
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 40px);
+    margin: 20px;
+    gap: 10px;
+}
+
+.achievement-image {
+    width: 200px;
+    height: 200px;
+}
+
+@media (max-width: 768px) {
+    .achievement-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+@media (max-width: 425px) {
+    .achievement-image {
+        width: 100px;
+        height: 100px;
+    }
+}

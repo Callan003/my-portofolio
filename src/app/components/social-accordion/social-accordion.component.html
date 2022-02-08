@@ -23,7 +23,7 @@
             <ion-spinner name="bubbles" *ngIf="!gitHubProfileInfo || fetchingData"></ion-spinner>
           </ion-label>
         </ion-item>
-        <ion-item href="https://github.com/Callan003" target="_blank">
+        <ion-item href="https://github.com/Callan003" target="_blank" (click)="updateAchievement(achievementId.GITHUB)">
           <ion-icon slot="start" size="small" name="enter" color="dark"></ion-icon>
           <ion-label>See my profile</ion-label>
         </ion-item>
@@ -78,7 +78,7 @@
           <ion-spinner *ngIf="!stackoverflowProfileInfo || fetchingData" name="bubbles"></ion-spinner>
         </ion-label>
       </ion-item>
-      <ion-item href="https://stackoverflow.com/users/15947768/callan" target="_blank">
+      <ion-item href="https://stackoverflow.com/users/15947768/callan" target="_blank" (click)="updateAchievement(achievementId.STACKOVERFLOW)">
         <ion-icon slot="start" size="small" name="enter" color="dark"></ion-icon>
         <ion-label>See my profile</ion-label>
       </ion-item>

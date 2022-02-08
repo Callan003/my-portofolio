@@ -1,0 +1,21 @@
+<ion-header [translucent]="true" collapse="fade">
+  <app-header #header></app-header>
+</ion-header>
+
+<ion-content>
+  <div class="center-content">
+    <div class="achievement" *ngFor="let item of achievements" >
+      <img [src]="getImage(item)" class="achievement-image"/>
+      <div class="w-100">
+        <h4 class="ion-no-margin"><strong>{{item.title}}</strong></h4>
+  
+        <p><i>{{item.description}}</i></p>
+  
+        <ion-progress-bar [value]="getProgressBarValue(item)" color="dark"></ion-progress-bar>
+        {{item.progress > item.limit[item.level - 1] && item.progress < item.limit[item.level] ? item.progress : item.limit[item.level - 1] || 0}}
+        /
+        {{item.limit[item.level] ? item.limit[item.level] : item.limit[item.limit.length - 1]}}
+      </div>
+    </div>
+  </div>
+</ion-content>

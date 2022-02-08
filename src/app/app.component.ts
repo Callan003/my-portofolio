@@ -1,5 +1,6 @@
+import { AchievementService } from './services/achievement.service';
 import { ToastController } from '@ionic/angular';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MenuItems, menuItemsToken } from './common';
 import { ItemReorderEventDetail } from '@ionic/core';
 import { Location } from '@angular/common';
@@ -11,7 +12,7 @@ import { App } from '@capacitor/app';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   @ViewChild('reorderGroup') reorderGroup: any;
 
@@ -23,13 +24,18 @@ export class AppComponent {
 
   constructor(
     private toastController: ToastController,
-    private location: Location
+    private location: Location,
+    private achievementService: AchievementService
     ) {
       this.backButtonEv();
       const menuItemsFromStorage = JSON.parse(localStorage.getItem(menuItemsToken));
       if(!!menuItemsFromStorage) {
         this.menuItems = menuItemsFromStorage;
       }
+  }
+
+  ngOnInit(): void {
+      this.achievementService.getInitialAchievementList();
   }
 
   backButtonEv() {

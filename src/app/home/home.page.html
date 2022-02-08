@@ -90,6 +90,10 @@
                     <ion-ripple-effect></ion-ripple-effect>
                   </ion-item>
                   <ion-item>
+                    <ion-button [disabled]="!areAllThingsDone()" (click)="receiveGift()" 
+                    fill="clear" color="dark" class="h-40 ion-text-center" [ngClass]="{'shake': areAllThingsDone()}">
+                      <ion-icon name="gift" size="large"></ion-icon>
+                    </ion-button>
                     <ion-button (click)="resetThingsToDo()" slot="end" fill="clear" color="dark" class="h-40">
                       <ion-icon name="refresh" slot="start"></ion-icon>
                       Reset

@@ -120,3 +120,25 @@
         background-color: var(--ion-card-background);
      }
  }
+
+ .shake {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 1.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  10% { transform:  rotate(-5deg); }
+  20% { transform:  rotate(5deg); }
+  30% { transform:  rotate(0deg); }
+  40% { transform:  rotate(1deg); }
+  50% { transform:  rotate(-5deg); }
+  60% { transform: rotate(5deg); }
+  70% { transform:  rotate(-1deg); }
+  80% { transform: rotate(1deg); }
+  90% { transform:  rotate(0deg); }
+  100% { transform:  rotate(-1deg); }
+}
