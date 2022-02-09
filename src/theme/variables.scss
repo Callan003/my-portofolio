@@ -319,4 +319,27 @@
   ion-backdrop {
     --backdrop-opacity: 0.1
   }
+  .alert-wrapper {
+    border-radius: 26px;
+  }
+}
+
+.achievement-alert-glow {
+  .alert-wrapper{
+    animation: glow 1s infinite alternate;
+    .alert-head {
+      .alert-title, .alert-sub-title {
+        color: #fffb19
+      }
+    }
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px 0px #d4d116;
+  }
+  to {
+    box-shadow: 0 0 10px 10px #fffb19;
+  }
 }

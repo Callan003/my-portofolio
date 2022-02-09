@@ -4,14 +4,21 @@
 
 <ion-content>
   <div class="center-content">
-    <div class="achievement" *ngFor="let item of achievements" >
+    <div class="ion-padding">
+      <h2 class="ion-no-margin">Here you can find a list of achievements that you can unlock by exploring my portofolio!</h2>
+      <ion-button (click)="resetAchievements()" slot="end" fill="clear" color="dark" class="h-40 ion-float-right ion-margin-bottom">
+        <ion-icon name="refresh" slot="start"></ion-icon>
+        Reset
+      </ion-button>
+    </div>
+    <div class="achievement" *ngFor="let item of achievements" (click)="openAchievementInfo(item)">
       <img [src]="getImage(item)" class="achievement-image"/>
       <div class="w-100">
         <h4 class="ion-no-margin"><strong>{{item.title}}</strong></h4>
   
         <p><i>{{item.description}}</i></p>
   
-        <ion-progress-bar [value]="getProgressBarValue(item)" color="dark"></ion-progress-bar>
+        <ion-progress-bar [value]="getProgressBarValue(item)" [color]="isMaxLevel(item) ? 'success' : 'dark'"></ion-progress-bar>
         {{item.progress > item.limit[item.level - 1] && item.progress < item.limit[item.level] ? item.progress : item.limit[item.level - 1] || 0}}
         /
         {{item.limit[item.level] ? item.limit[item.level] : item.limit[item.limit.length - 1]}}

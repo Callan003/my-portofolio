@@ -25,10 +25,10 @@ export class FavoriteService {
   }
 
   addToFavorites(favorite) {
+    this.achievementService.increaseAchievementProgress(AchievementId.FAVORITE);
     if (this.isProjectOnFavoriteList(favorite)) return;
 
     this.localFavorites.push(favorite);
-    this.achievementService.increaseAchievementProgress(AchievementId.FAVORITE);
     localStorage.setItem('favorites', JSON.stringify(this.localFavorites));
   }
 

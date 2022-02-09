@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class AchievementService {
 
-  achievementList = AchievementList
+  achievementList = JSON.parse(JSON.stringify(AchievementList));
 
   constructor(private alertController: AlertController) { }
 
@@ -21,6 +21,7 @@ export class AchievementService {
         this.achievementList[achievementP.id].level = ++this.achievementList[achievementP?.id].level;
       }
     });
+
   }
 
   getAchievementList(displayAlert?: boolean) {
@@ -32,11 +33,10 @@ export class AchievementService {
       while(this.achievementList[achievementP.id].progress >= this.achievementList[achievementP.id].limit[this.achievementList[achievementP.id].level]){
         this.achievementList[achievementP.id].level = ++this.achievementList[achievementP?.id].level;
         if(displayAlert) {
-          this.displayNewAchievementAlert(this.achievementList[achievementP.id]);
+          this.displayNewAchievementAlert(this.achievementList[achievementP.id], true);
         }
       }
     });
-    console.log(this.achievementList);
     return this.achievementList;
   }
 
@@ -58,15 +58,27 @@ export class AchievementService {
     localStorage.setItem('achievementProgress', JSON.stringify(localAchievementProgress));
   }
 
-  async displayNewAchievementAlert(achievement) {
-    console.log(achievement);
+  resetAchievements() {
+    localStorage.removeItem('achievementProgress');
+    this.achievementList = JSON.parse(JSON.stringify(AchievementList));
+    return this.achievementList;
+  }
+
+  isAchievementAtMaxLevel(achievement): boolean {
+    const currentAchievement = this.achievementList.find(ach => ach.id === achievement.id);
+    return currentAchievement.level === currentAchievement.limit.length;
+  }
+
+  async displayNewAchievementAlert(achievement, autoDismiss?: boolean) {
+    const maxLevel = this.isAchievementAtMaxLevel(achievement);
+
     const alert = await this.alertController.create({
-      header: "Achievement Unlocked!",
-      subHeader: `${achievement.title} - Level ${achievement.level}`,
-      cssClass: 'achievement-alert',
-      message: `<img src='../../assets/Badges/${achievement.title}${achievement.level}.png'/>`
+      header: achievement.level === 0 ? 'Achievement Locked!' : 'Achievement Unlocked!',
+      subHeader: `${achievement.title} - Level ${achievement.level} ${maxLevel ? '(Max)' : ''}`,
+      cssClass: 'achievement-alert ' + (maxLevel ? 'achievement-alert-glow' : ''),
+      message: `<img src='../../assets/Badges/${achievement.title}${achievement.level}.png'/> `,
     });
     alert.present();
-    setTimeout(()=>alert.dismiss(),3000);
+    if(autoDismiss) setTimeout(()=>alert.dismiss(), 3000);
   }
 }
