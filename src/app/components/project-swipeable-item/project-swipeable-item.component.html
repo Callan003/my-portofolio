@@ -1,20 +1,22 @@
-<ion-card>
+<ion-card mode="md">
   <img [src]="imgSrc"
    onerror="this.onerror=null; this.src='../../../assets/images/no-image.jpg'" width="300" height="200" [alt]='item.name' />
   <ion-card-header>
     <ion-card-title>{{item.name}}</ion-card-title>
+    <ion-card-subtitle>
+      <div>
+        <ion-chip>
+          <ion-icon name="calendar-number-outline" color="dark" size="small"></ion-icon>
+          <ion-label>{{item.created_at | date}}</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-icon name="star" color="warning" size="small"></ion-icon>
+          <ion-label>{{item.stargazers_count}}</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
     <p [ngClass]="{'font-style-italic' : !item.description}">{{item.description ? item.description : "This project has no description"}}</p>
-    <div>
-      <ion-chip>
-        <ion-icon name="calendar-number-outline" color="dark" size="small"></ion-icon>
-        <ion-label>{{item.created_at | date}}</ion-label>
-      </ion-chip>
-      <ion-chip>
-        <ion-icon name="star" color="warning" size="small"></ion-icon>
-        <ion-label>{{item.stargazers_count}}</ion-label>
-      </ion-chip>
-    </div>
   </ion-card-content>
 </ion-card>

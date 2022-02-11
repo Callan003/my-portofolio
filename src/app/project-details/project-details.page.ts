@@ -1,3 +1,5 @@
+import { AchievementId } from 'src/app/common';
+import { AchievementService } from './../services/achievement.service';
 import { ThingsToDoService } from './../services/things-to-do.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -32,7 +34,8 @@ export class ProjectDetailsPage implements OnInit {
     private mdService: MarkdownService,
     public alertController: AlertController,
     private toastController: ToastController,
-    private thingsToDoService: ThingsToDoService
+    private thingsToDoService: ThingsToDoService,
+    public achievementService: AchievementService
     ) { }
     
 
@@ -53,6 +56,10 @@ export class ProjectDetailsPage implements OnInit {
       this.createPieChart(result);
     });
     this.thingsToDoService.setThingDone(2)
+  }
+
+  gitHubAchievement() {
+    this.achievementService.increaseAchievementProgress(AchievementId.GITHUB);
   }
 
   getImageSrc(date: string): string {

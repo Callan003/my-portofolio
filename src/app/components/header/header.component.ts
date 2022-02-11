@@ -1,5 +1,5 @@
 import { AchievementService } from './../../services/achievement.service';
-import { MenuController, Platform } from '@ionic/angular';
+import { MenuController, Platform, ToastController } from '@ionic/angular';
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { AchievementId, MenuItems, ThemeAttribute, ThemeIcons, Themes } from 'src/app/common';
@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit {
 
   theme: Themes;
   themeIcon: ThemeIcons;
-  changeThemeButtonClicked: boolean;
   menuItems = MenuItems;
   mobileMenu: boolean;
 
@@ -23,7 +22,8 @@ export class HeaderComponent implements OnInit {
     private platform: Platform,
     private menuController: MenuController,
     private thingsToDoService: ThingsToDoService,
-    private achievementService: AchievementService
+    private achievementService: AchievementService,
+    private toastController: ToastController
     ) {
     this.theme = localStorage.getItem(ThemeAttribute) as Themes || Themes.DARK;
     document.body.setAttribute(ThemeAttribute, this.theme);
@@ -55,7 +55,6 @@ export class HeaderComponent implements OnInit {
   public changeTheme(): void {
     this.thingsToDoService.setThingDone(4);
     this.achievementService.increaseAchievementProgress(AchievementId.DAYNIGHT);
-    this.changeThemeButtonClicked = true;
     switch(this.theme) {
       case Themes.DARK: 
         this.theme = Themes.LIGHT;
@@ -70,6 +69,7 @@ export class HeaderComponent implements OnInit {
       default:
         break;
     }
+    this.presentToast();
     this.setThemeIcon();
   }
 
@@ -87,4 +87,15 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: this.theme === Themes.LIGHT ? 'Let there be light!' : 'Welcome to the dark side!',
+      duration: 2000,
+      position: 'top',
+      color: 'dark',
+      cssClass: 'ion-text-center',
+      icon: this.theme === Themes.LIGHT ? ThemeIcons.LIGHT : ThemeIcons.DARK
+    });
+    toast.present();
+  }
 }

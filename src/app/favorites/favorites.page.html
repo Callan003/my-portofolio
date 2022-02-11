@@ -5,9 +5,9 @@
 <ion-content [fullscreen]="true">
   <ion-grid class="center-grid ion-padding-horizontal">
     <ion-row>
-      <ion-col >
-        <h2>List of Favorites</h2>
-        <p *ngIf="data?.length" >Here you can find a list of my GitHub projects that you added to Favorites!</p>
+      <ion-col class="ion-no-padding">
+        <h2 class="ion-padding-horizontal">List of Favorites</h2>
+        <p class="ion-padding-horizontal" *ngIf="data?.length" >Here you can find a list of my GitHub projects that you added to Favorites!</p>
         <ion-item *ngIf="data?.length" lines="none" ><ion-icon name="eye" slot="start"></ion-icon> Click on a project to see more!</ion-item>
       </ion-col>
     </ion-row>

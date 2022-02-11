@@ -13,7 +13,6 @@ export class AchievementService {
 
   getInitialAchievementList() {
     const achievemntProgress = JSON.parse(localStorage.getItem('achievementProgress')) || [];
-    console.log(achievemntProgress);
     achievemntProgress.forEach(achievementP => {
 
       this.achievementList[achievementP.id].progress = achievementP.progress;
@@ -26,7 +25,6 @@ export class AchievementService {
 
   getAchievementList(displayAlert?: boolean) {
     const achievemntProgress = JSON.parse(localStorage.getItem('achievementProgress')) || [];
-    console.log(achievemntProgress);
     achievemntProgress.forEach(achievementP => {
 
       this.achievementList[achievementP.id].progress = achievementP.progress;
@@ -45,6 +43,18 @@ export class AchievementService {
     this.setAchievementProgressInLS({id: achievementId, progress: ++this.achievementList[achievementId].progress});
     this.getAchievementList(true);
 
+  }
+
+  resetAchievement(achievementId: AchievementId) {
+    const localAchievementProgress = JSON.parse(localStorage.getItem('achievementProgress')) || [];
+    const achievementIndex = localAchievementProgress.findIndex(local => local.id === achievementId);
+    if(achievementIndex >= 0){
+      localAchievementProgress[achievementIndex].progress = 0;
+    } else {
+      return
+    }
+    localStorage.setItem('achievementProgress', JSON.stringify(localAchievementProgress));
+    this.achievementList[achievementId].level = 0;
   }
 
   setAchievementProgressInLS(achievement) {
@@ -66,7 +76,9 @@ export class AchievementService {
 
   isAchievementAtMaxLevel(achievement): boolean {
     const currentAchievement = this.achievementList.find(ach => ach.id === achievement.id);
-    return currentAchievement.level === currentAchievement.limit.length;
+    if(currentAchievement) {
+      return currentAchievement.level === currentAchievement.limit.length;
+    } else return false;
   }
 
   async displayNewAchievementAlert(achievement, autoDismiss?: boolean) {
@@ -74,9 +86,10 @@ export class AchievementService {
 
     const alert = await this.alertController.create({
       header: achievement.level === 0 ? 'Achievement Locked!' : 'Achievement Unlocked!',
-      subHeader: `${achievement.title} - Level ${achievement.level} ${maxLevel ? '(Max)' : ''}`,
+      subHeader: `${achievement.title} - Level ${achievement.level} ${maxLevel ? '(Max Level)' : ''}`,
       cssClass: 'achievement-alert ' + (maxLevel ? 'achievement-alert-glow' : ''),
       message: `<img src='../../assets/Badges/${achievement.title}${achievement.level}.png'/> `,
+      mode: 'ios'
     });
     alert.present();
     if(autoDismiss) setTimeout(()=>alert.dismiss(), 3000);

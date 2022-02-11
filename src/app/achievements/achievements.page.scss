@@ -18,6 +18,17 @@
     height: 200px;
 }
 
+.text-sub {
+    vertical-align: sub;
+}
+
+.smaller-margin {
+    margin: 10px 0;
+}
+ion-badge {
+    margin: 0 2px;
+}
+
 @media (max-width: 768px) {
     .achievement-image {
         width: 150px;

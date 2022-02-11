@@ -75,6 +75,14 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  /** gold **/
+  --ion-color-gold: #FFD700;
+	--ion-color-gold-rgb: 255,215,0;
+	--ion-color-gold-contrast: #000000;
+	--ion-color-gold-contrast-rgb: 0,0,0;
+	--ion-color-gold-shade: #e0bd00;
+	--ion-color-gold-tint: #ffdb1a;
+
   --ion-card-color: #000;
   ion-card-title {
     color: #000;
@@ -150,6 +158,13 @@
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
 
+    --ion-color-gold: #FFD700;
+    --ion-color-gold-rgb: 255,215,0;
+    --ion-color-gold-contrast: #000000;
+    --ion-color-gold-contrast-rgb: 0,0,0;
+    --ion-color-gold-shade: #e0bd00;
+    --ion-color-gold-tint: #ffdb1a;
+
     --ion-card-color: #fff;
     ion-card-title {
       color: #fff;
@@ -188,9 +203,9 @@
     --ion-color-step-900: #e6e6e6;
     --ion-color-step-950: #f2f2f2;
 
-    --ion-item-background: #1e1e1e;
+    --ion-item-background: #2a2a2a;
 
-    --ion-card-background: #1e1e1e;
+    --ion-card-background: #2a2a2a;
   }
 
   .ios ion-modal[color-theme="dark"] {
@@ -234,13 +249,22 @@
     --ion-color-step-900: #e7e7e7;
     --ion-color-step-950: #f3f3f3;
 
-    --ion-item-background: #1e1e1e;
+    --ion-item-background: #2a2a2a;
 
     --ion-toolbar-background: #121212;
 
     --ion-tab-bar-background: #1f1f1f;
 
-    --ion-card-background: #1e1e1e;
+    --ion-card-background: #2a2a2a;
+  }
+
+  .ion-color-gold {
+    --ion-color-base: var(--ion-color-gold);
+    --ion-color-base-rgb: var(--ion-color-gold-rgb);
+    --ion-color-contrast: var(--ion-color-gold-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-gold-contrast-rgb);
+    --ion-color-shade: var(--ion-color-gold-shade);
+    --ion-color-tint: var(--ion-color-gold-tint);
   }
 
   .readme-data {
@@ -315,12 +339,31 @@
   border-radius: 16px;
 }
 
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.color-dark {
+  color: var(--ion-color-dark) !important;
+  --color: var(--ion-color-dark) !important;
+}
+
+.color-success {
+  color: var(--ion-color-success) !important;
+  --color: var(--ion-color-success) !important;
+}
+
 .achievement-alert {
+  font-weight: bold;
   ion-backdrop {
-    --backdrop-opacity: 0.1
+    --backdrop-opacity: 0.3
   }
   .alert-wrapper {
     border-radius: 26px;
+    box-shadow: 0 0px 20px rgb(255 255 255 / 50%), 0 0px 0px rgb(255 255 255 / 50%);
+   .alert-message {
+    max-height: 270px;
+   }
   }
 }
 
@@ -329,7 +372,7 @@
     animation: glow 1s infinite alternate;
     .alert-head {
       .alert-title, .alert-sub-title {
-        color: #fffb19
+        color: var(--ion-color-gold)
       }
     }
   }
@@ -337,9 +380,9 @@
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px 0px #d4d116;
+    box-shadow: 0 0 10px 0px var(--ion-color-gold-shade);
   }
   to {
-    box-shadow: 0 0 10px 10px #fffb19;
+    box-shadow: 0 0 10px 10px var(--ion-color-gold);
   }
 }

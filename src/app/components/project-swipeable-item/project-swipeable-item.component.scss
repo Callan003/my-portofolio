@@ -1,22 +1,22 @@
 ion-card {
     width: calc(100% - 20px);
     max-width: 500px;
-    min-height: 500px;
+    height: 500px;
     max-width: 300px;
     margin: auto;
     img {
       max-height: 300px;
       max-width: 100%;
     }
-    p {
-      padding-bottom: 48px;
+    ion-card-header {
+      padding-bottom: 0;
     }
-
     ion-card-content {
-      min-height: 240px !important;
-      div {
-        position: absolute;
-        bottom: 16px;
+      min-height: 190px !important;
+      text-align: center; 
+      display: flex;
+      p {
+        margin: auto;
       }
     }
 }

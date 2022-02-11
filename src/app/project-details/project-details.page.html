@@ -50,7 +50,7 @@
                 </ion-text>
                 <ion-spinner slot="end" name="bubbles" *ngIf="!projectDetails"></ion-spinner>
               </ion-item>
-              <ion-item [href]="'https://github.com/Callan003/' + projectName" target="_blank">
+              <ion-item [href]="'https://github.com/Callan003/' + projectName" target="_blank" (click)="gitHubAchievement()">
                 <ion-text slot="start">Github Project Link</ion-text>
                 <ion-text slot="end">
                   <ion-icon size="small" name="logo-github" color="dark"></ion-icon>

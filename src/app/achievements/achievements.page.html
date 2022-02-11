@@ -4,25 +4,41 @@
 
 <ion-content>
   <div class="center-content">
-    <div class="ion-padding">
-      <h2 class="ion-no-margin">Here you can find a list of achievements that you can unlock by exploring my portofolio!</h2>
-      <ion-button (click)="resetAchievements()" slot="end" fill="clear" color="dark" class="h-40 ion-float-right ion-margin-bottom">
-        <ion-icon name="refresh" slot="start"></ion-icon>
-        Reset
-      </ion-button>
-    </div>
-    <div class="achievement" *ngFor="let item of achievements" (click)="openAchievementInfo(item)">
-      <img [src]="getImage(item)" class="achievement-image"/>
-      <div class="w-100">
-        <h4 class="ion-no-margin"><strong>{{item.title}}</strong></h4>
-  
-        <p><i>{{item.description}}</i></p>
-  
-        <ion-progress-bar [value]="getProgressBarValue(item)" [color]="isMaxLevel(item) ? 'success' : 'dark'"></ion-progress-bar>
-        {{item.progress > item.limit[item.level - 1] && item.progress < item.limit[item.level] ? item.progress : item.limit[item.level - 1] || 0}}
-        /
-        {{item.limit[item.level] ? item.limit[item.level] : item.limit[item.limit.length - 1]}}
+    <h2>
+      <span class="text-sub ion-margin-start">Achievements</span>
+      <ion-button id="open-popover" fill="clear" color="dark" class="ion-float-right"><ion-icon name="settings-outline"></ion-icon></ion-button>
+    </h2>
+    <ion-popover arrow="true" dismissOnSelect="true" trigger="open-popover">
+      <ng-template>
+        <ion-list lines="none">
+          <ion-item (click)="openInfo()" [button]="true" [detail]="false">
+            <ion-icon name="information-circle-outline" slot="end"></ion-icon>
+            <ion-label>Info</ion-label>
+          </ion-item>
+          <ion-item [button]="true" [detail]="false" (click)="resetAchievements()">
+            <ion-icon name="refresh" slot="end"></ion-icon>
+            <ion-label>Reset Progress</ion-label>
+          </ion-item>
+        </ion-list>
+      </ng-template>
+    </ion-popover>
+
+      <div class="achievement" *ngFor="let item of achievements" (click)="openAchievementInfo(item)">
+        <a [href]="item.title"></a>
+        <img [src]="getImage(item)" class="achievement-image"/>
+        <div class="w-100">
+          <h4 class="ion-no-margin"><strong>{{item.title}}</strong></h4>
+    
+          <p class="smaller-margin"><i>{{item.description}}</i></p>
+    
+          <ion-badge mode="ios" [color]="isMaxLevel(item) ? 'success' : item.progress === 0 ? 'medium' : 'dark'">
+            {{item.progress > item.limit[item.level - 1] && item.progress < item.limit[item.level] ? item.progress : item.limit[item.level - 1] || 0}}
+            /
+            {{item.limit[item.level] ? item.limit[item.level] : item.limit[item.limit.length - 1]}}
+          </ion-badge>
+          <ion-badge color="success" mode="ios" *ngIf="isMaxLevel(item)" > Max Level</ion-badge>
+          <ion-progress-bar [value]="getProgressBarValue(item)" [color]="isMaxLevel(item) ? 'success' : item.progress === 0 ? 'medium' : 'dark'"></ion-progress-bar>
+        </div>
       </div>
-    </div>
   </div>
 </ion-content>

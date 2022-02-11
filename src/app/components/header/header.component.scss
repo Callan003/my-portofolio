@@ -21,6 +21,10 @@
     }
 }
 
+ion-toolbar {
+    box-shadow: 0 2px 3px -3px var(--ion-color-dark);
+}
+
 .desktop-menu-buttons {
     text-align: left;
     margin-left: 30px;

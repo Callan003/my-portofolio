@@ -3,8 +3,6 @@
     <ion-menu-button auto-hide="false"></ion-menu-button>
   </ion-buttons>
   <ion-buttons slot="secondary">
-    <p *ngIf="theme === 'light' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'light'}">Let there be light!</p>
-    <p *ngIf="theme === 'dark' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'dark'}">Welcome to the dark side!</p>
     <ion-button (click)="changeTheme()">
       <ion-icon slot="end" [name]="themeIcon" color="dark"></ion-icon>
     </ion-button>
@@ -21,8 +19,6 @@
   </div>
 
   <ion-buttons slot="secondary">
-    <p *ngIf="theme === 'light' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'light'}">Let there be light!</p>
-    <p *ngIf="theme === 'dark' && changeThemeButtonClicked === true" [ngClass]="{'fade-in-and-out': theme === 'dark'}">Welcome to the dark side!</p>
     <ion-button (click)="changeTheme()">
       <ion-icon slot="end" [name]="themeIcon" color="dark"></ion-icon>
     </ion-button>

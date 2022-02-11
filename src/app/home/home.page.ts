@@ -4,7 +4,7 @@ import { AchievementId, ThemeIcons, ThingsToDo } from './../common';
 import { FavoriteService } from './../services/favorite.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IonRouterOutlet } from '@ionic/angular';
+import { IonRouterOutlet, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,19 +25,22 @@ export class HomePage implements OnInit {
   fetchingData = false;
   favorites = [];
   thingsToDo = ThingsToDo;
+  explorerAchievementReceived: boolean;
 
   constructor(
     private http: HttpClient,
     private favoriteService: FavoriteService,
     private thingsToDoService: ThingsToDoService,
-    private router: Router,
-    private achievementService: AchievementService
+    public router: Router,
+    private achievementService: AchievementService,
+    private alertController: AlertController
     ) {}
 
   ngOnInit(): void {
     this.getThingsToDoFromLS();
     this.fetchData();
     this.favorites = this.favoriteService.getFavorites();
+    this.isExplorerAchievementReceived();
   }
 
   fetchData() {
@@ -85,7 +88,6 @@ export class HomePage implements OnInit {
         this.router.navigate(['project-listing/tinder-style']);
         break;
       case 4:
-        console.log(this.header);
         this.thingsToDo[4].icon = this.thingsToDo[4].icon === ThemeIcons.DARK ? ThemeIcons.LIGHT : ThemeIcons.DARK;
         this.header.changeTheme();
         break;
@@ -105,8 +107,31 @@ export class HomePage implements OnInit {
     this.thingsToDo = this.thingsToDoService.getThingsToDoFromLS();
   }
 
-  resetThingsToDo() {
+  async resetThingsToDo(){
+      const resetThingsToDo = await this.alertController.create({
+        header: "Please confirm",
+        mode: 'ios',
+        message: 'Are you sure you want to reset your explore list? <b>This action will also reset the "Explorer" achievement!</b> ',
+        buttons: [{
+          text: 'Cancel',
+          cssClass: 'color-dark',
+          role: 'cancel'
+        }, {
+          text: 'Reset',
+          cssClass: 'color-success',
+          handler: () => {
+            this.resetThingsToDoConfirmerd();
+          }
+        }]
+      });
+  
+      resetThingsToDo.present();
+  }
+
+  resetThingsToDoConfirmerd() {
     this.thingsToDoService.resetThingsToDo();
+    this.achievementService.resetAchievement(AchievementId.EXPLORER);
+    this.isExplorerAchievementReceived();
   }
 
   areAllThingsDone() {
@@ -115,5 +140,10 @@ export class HomePage implements OnInit {
 
   receiveGift() {
     this.achievementService.increaseAchievementProgress(AchievementId.EXPLORER);
+    this.isExplorerAchievementReceived();
+  }
+
+  isExplorerAchievementReceived() {
+    this.explorerAchievementReceived = this.achievementService.isAchievementAtMaxLevel({id: AchievementId.EXPLORER});
   }
 }
