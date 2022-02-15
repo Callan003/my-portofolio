@@ -23,9 +23,8 @@
       </ng-template>
     </ion-popover>
 
-      <div class="achievement" *ngFor="let item of achievements" (click)="openAchievementInfo(item)">
-        <a [href]="item.title"></a>
-        <img [src]="getImage(item)" class="achievement-image"/>
+      <div class="achievement cursor-pointer" *ngFor="let item of achievements" (click)="openAchievementInfo(item)">
+        <img [src]="getImage(item)" class="achievement-image" [alt]="item.title"/>
         <div class="w-100">
           <h4 class="ion-no-margin"><strong>{{item.title}}</strong></h4>
     

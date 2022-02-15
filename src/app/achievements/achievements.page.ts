@@ -20,7 +20,7 @@ export class AchievementsPage implements OnInit {
   }
 
   getImage(item): string {
-    return `../../assets/Badges/${item.title}${item.level}.png`;
+    return `../../assets/Badges/${item.title}${item.level}.webp`;
   }
 
   getProgressBarValue(item: Achievement) {

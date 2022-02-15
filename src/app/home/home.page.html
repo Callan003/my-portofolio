@@ -15,7 +15,7 @@
               <h1>Hello there!</h1>
             </div>
             <div class="flip-card-back bg-black">
-              <img src="../../assets/images/general_kenobi.gif" alt="general_kenobi">
+              <img src="../../assets/images/general_kenobi.png" alt="general_kenobi">
             </div>
           </div>
         </div>
@@ -71,7 +71,8 @@
                     fill="clear" color="dark" class="h-40 ion-text-center" [ngClass]="{'shake': areAllThingsDone()}">
                       <ion-icon name="gift" size="large"></ion-icon>
                     </ion-button>
-                      <img (click)="router.navigate(['achievements']);" *ngIf="explorerAchievementReceived" class="cursor-pointer vertical-align-middle ion-margin-horizontal" width="50" height="50" src="../../assets/Badges/Explorer1.png"/>
+                      <img (click)="router.navigate(['achievements']);" *ngIf="explorerAchievementReceived" class="cursor-pointer vertical-align-middle ion-margin-horizontal"
+                       width="50" height="50" src="../../assets/Badges/Explorer1.webp" alt="explorerAchievement" />
                     <ion-button (click)="resetThingsToDo()" slot="end" fill="clear" color="dark" class="h-40">
                       <ion-icon name="refresh" slot="start"></ion-icon>
                       Reset

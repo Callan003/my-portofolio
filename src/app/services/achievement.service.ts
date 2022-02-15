@@ -88,7 +88,7 @@ export class AchievementService {
       header: achievement.level === 0 ? 'Achievement Locked!' : 'Achievement Unlocked!',
       subHeader: `${achievement.title} - Level ${achievement.level} ${maxLevel ? '(Max Level)' : ''}`,
       cssClass: 'achievement-alert ' + (maxLevel ? 'achievement-alert-glow' : ''),
-      message: `<img src='../../assets/Badges/${achievement.title}${achievement.level}.png'/> `,
+      message: `<img src='../../assets/Badges/${achievement.title}${achievement.level}.webp' alt='${achievement.title}'/> `,
       mode: 'ios'
     });
     alert.present();

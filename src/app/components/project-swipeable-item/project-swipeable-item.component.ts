@@ -12,7 +12,7 @@ export class ProjectSwipeableItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.imgSrc=`https://github.com/Callan003/${this.item?.name}/blob/${this.item?.default_branch}/${this.item?.name}.jpg?raw=true`;
+    this.imgSrc=`https://github.com/Callan003/${this.item?.name}/blob/${this.item?.default_branch}/${this.item?.name}.webp?raw=true`;
   }
 
 }
