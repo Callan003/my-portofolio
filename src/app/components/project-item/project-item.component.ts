@@ -11,6 +11,7 @@ export class ProjectItemComponent implements OnInit {
   
   @Input() item: any;
   isFav: boolean;
+  toggleFav: boolean;
   imgSrc: string;
   favorites = [];
 
@@ -26,6 +27,7 @@ export class ProjectItemComponent implements OnInit {
   }
 
   addToFavorites(project) {
+    this.toggleFav = true;
     const favoriteDto = {
       id: project?.id,
       name: project?.name,
